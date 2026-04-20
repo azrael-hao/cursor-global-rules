@@ -8,7 +8,8 @@ Cursor IDE 全局规则文件，适用于所有项目。
 |------|------|:-----------:|------|
 | `adaptive-thinking.mdc` | 规则 | ✅ | 强制双重思考验证：复杂任务必须进行至少2次深度思考分析 |
 | `context-compression.mdc` | 规则 | ✅ | 上下文接近容量上限时自动压缩，保持会话连续性 |
-| `decision-change-approval.mdc` | 规则 | ✅ | 决策变更或路径切换必须切换 Plan 模式征询用户同意 |
+| `decision-change-approval.mdc` | 规则 | ✅ | 决策变更和任务自然延续的双重标准判断规则 |
+| `no-inference-verification-required.mdc` | 规则 | ✅ | 禁止推断，强制验证：所有可验证事实必须通过实际查询确认 |
 | `remote-process-cleanup.mdc` | 规则 | ✅ | 终止本地进程时必须同时清理远端源头进程 |
 | `github-cli-setup.mdc` | Skill | ❌ | GitHub CLI 安装、代理配置与全局规则仓库同步方法 |
 
