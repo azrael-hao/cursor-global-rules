@@ -1,0 +1,461 @@
+---
+description: 禁止通过推断确定事实，必须通过实际验证获取
+globs:
+alwaysApply: true
+---
+
+# 禁止推断规则 - 强制验证原则
+
+## 核心原则
+
+**禁止通过推断、猜测、假设来确定任何可以验证的事实。所有关键信息必须通过实际查询、测试或检查来确认。**
+
+**零容忍原则**: 对于可验证的事实，0% 的推断是可接受的，100% 必须通过验证获取。
+
+---
+
+## 必须验证的场景（禁止推断）
+
+### 1. 数据库结构信息
+
+#### ❌ 禁止推断
+- 基于命名规范推断字段名
+  - "关联 user 表，字段应该是 `user_id`"
+  - "外键通常是 `{table}_id` 格式"
+- 基于业务逻辑推断表之间的关联
+  - "订单和客户肯定有直接关联"
+  - "入库表应该有工单 ID"
+- 基于其他表的结构推断当前表
+  - "A 表有这个字段，B 表应该也有"
+
+#### ✅ 必须验证
+```sql
+-- 验证表结构
+DESCRIBE table_name;
+SHOW COLUMNS FROM table_name;
+
+-- 验证字段存在
+SELECT column_name FROM information_schema.columns 
+WHERE table_name = 'xxx' AND column_name = 'yyy';
+
+-- 验证关联关系
+SELECT COUNT(*) FROM table_a a 
+JOIN table_b b ON a.field = b.field;
+```
+
+**实际案例（错误）**:
+```sql
+-- 错误推断：基于命名规范
+JOIN mom_dispatch_record rec ON disp.id = rec.dispatch_id  ❌
+-- 实际字段是: rec.mo_dispatch
+
+-- 错误推断：假设直接关联
+JOIN wms_complete_in ci ON mo.id = ci.mo_id  ❌
+-- 实际需要桥接: mo → dispatch → complete_in
+```
+
+---
+
+### 2. API 接口和函数签名
+
+#### ❌ 禁止推断
+- 基于函数名推断参数
+  - "这个函数应该接受字符串参数"
+- 基于文档版本推断 API 行为
+  - "这是标准 REST API，应该支持 PUT"
+- 基于类似库推断方法存在性
+  - "pandas 有这个方法，polars 应该也有"
+
+#### ✅ 必须验证
+```python
+# 查看实际签名
+help(function_name)
+inspect.signature(function_name)
+
+# 查看实际属性
+dir(object)
+hasattr(object, 'method')
+
+# 测试实际行为
+# 编写小测试验证
+```
+
+---
+
+### 3. 文件路径和系统配置
+
+#### ❌ 禁止推断
+- 基于操作系统推断路径
+  - "Linux 配置文件应该在 /etc/"
+- 基于软件名推断安装位置
+  - "应该在 /usr/local/bin/"
+- 基于惯例推断文件存在
+  - "项目应该有 README.md"
+
+#### ✅ 必须验证
+```bash
+# 验证文件存在
+ls -la path/to/file
+test -f path/to/file && echo "exists"
+
+# 验证目录存在
+ls -d path/to/dir
+
+# 查找实际位置
+which command
+find / -name "filename"
+```
+
+---
+
+### 4. 数据类型和格式
+
+#### ❌ 禁止推断
+- 基于字段名推断类型
+  - "`created_at` 应该是 datetime"
+  - "`amount` 应该是 decimal"
+- 基于业务逻辑推断格式
+  - "手机号应该是 11 位"
+  - "邮箱应该符合标准格式"
+
+#### ✅ 必须验证
+```sql
+-- 验证实际类型
+DESCRIBE table_name;
+
+-- 验证实际数据格式
+SELECT DISTINCT field, LENGTH(field) 
+FROM table_name LIMIT 100;
+
+-- 验证数据范围
+SELECT MIN(field), MAX(field), 
+       COUNT(DISTINCT field) 
+FROM table_name;
+```
+
+---
+
+### 5. 代码依赖和版本
+
+#### ❌ 禁止推断
+- 基于项目类型推断依赖
+  - "React 项目应该有 react-dom"
+- 基于时间推断版本
+  - "2024 年的项目应该用 Python 3.10+"
+- 基于一个依赖推断其他依赖
+  - "用了 pandas 应该也装了 numpy"
+
+#### ✅ 必须验证
+```bash
+# 验证依赖存在
+pip list | grep package
+npm list package
+
+# 验证版本
+python --version
+node --version
+package --version
+
+# 验证导入
+python -c "import package; print(package.__version__)"
+```
+
+---
+
+## 执行规范
+
+### 验证优先级流程
+
+```
+遇到需要某个事实
+    ↓
+第 1 问：能否验证？
+    ↓           ↓
+   能          不能
+    ↓           ↓
+必须验证     可以推断
+    ↓         (并注明)
+验证后使用
+```
+
+### 强制验证检查清单
+
+在使用任何事实前，自问：
+
+1. **这是可验证的事实吗？**
+   - ✅ 数据库字段、API 接口、文件路径 → 必须验证
+   - ❌ 业务需求、用户偏好 → 可以询问
+
+2. **我已经验证过了吗？**
+   - ✅ 执行过 DESCRIBE、测试过代码 → 可以使用
+   - ❌ 基于经验、文档、推断 → 必须验证
+
+3. **验证结果是否记录？**
+   - ✅ 有查询输出、测试结果 → 可信
+   - ❌ 凭记忆、印象 → 重新验证
+
+### 文档中的标注要求
+
+当在文档或代码注释中引用事实时，必须标注来源：
+
+#### ✅ 正确标注
+```sql
+-- ✅ 已验证: DESCRIBE mom_dispatch_record
+-- 实际字段: mo_dispatch (varchar 32)
+JOIN mom_dispatch_record rec ON disp.id = rec.mo_dispatch
+```
+
+```markdown
+## 表结构
+- `user_id`: varchar(32) - ✅ 验证于 2025-01-15 via DESCRIBE
+- `email`: varchar(100) - ✅ 验证于 2025-01-15 via DESCRIBE
+```
+
+#### ❌ 禁止标注
+```sql
+-- 假设字段名是 dispatch_id
+-- 根据命名规范应该是 user_id
+-- 通常这类表都有 created_at 字段
+```
+
+---
+
+## 例外情况（可以推断）
+
+以下情况可以基于推断，但必须明确标注为"推断"：
+
+### 1. 不可验证的业务逻辑
+- 用户需求理解
+- 业务流程设计
+- 优先级判断
+
+**标注方式**: "基于业务理解，推断..."
+
+### 2. 性能估算
+- 查询性能预估
+- 资源消耗估算
+- 扩展性评估
+
+**标注方式**: "基于经验估算..."
+
+### 3. 设计决策
+- 技术方案选型
+- 架构模式选择
+- 命名规范制定
+
+**标注方式**: "基于最佳实践，建议..."
+
+---
+
+## 实际案例对比
+
+### ❌ 案例 1：错误的推断（本次错误）
+
+**场景**: 设计生产过程查询 SQL
+
+**错误做法**:
+```sql
+-- 推断 1: 基于命名规范
+-- "关联 mom_dispatch，字段应该是 dispatch_id"
+JOIN mom_dispatch_record rec ON disp.id = rec.dispatch_id  ❌
+
+-- 推断 2: 基于业务逻辑
+-- "入库对应工单，应该有 mo_id"
+JOIN wms_complete_in ci ON mo.id = ci.mo_id  ❌
+```
+
+**验证结果**: 两个字段都不存在
+- 实际字段 1: `mo_dispatch` (不是 `dispatch_id`)
+- 实际字段 2: 不存在 `mo_id`，需要通过 `mo_dispatch_id` 桥接
+
+**正确做法**:
+```bash
+# 第 1 步: 验证实际结构
+DESCRIBE mom_dispatch_record;
+DESCRIBE wms_complete_in;
+
+# 第 2 步: 基于验证结果编写 SQL
+JOIN mom_dispatch_record rec ON disp.id = rec.mo_dispatch  ✅
+```
+
+---
+
+### ✅ 案例 2：正确的验证
+
+**场景**: 需要关联两个表
+
+**正确做法**:
+```bash
+# 1. 先验证表结构
+DESCRIBE table_a;
+DESCRIBE table_b;
+
+# 2. 确认关联字段
+SELECT DISTINCT foreign_key_field FROM table_a LIMIT 10;
+SELECT DISTINCT primary_key_field FROM table_b LIMIT 10;
+
+# 3. 验证关联有效性
+SELECT COUNT(*) FROM table_a a
+JOIN table_b b ON a.fk = b.pk;
+-- 结果: 12,345 rows
+
+# 4. 编写 SQL 并注明验证结果
+```
+
+**SQL 注释**:
+```sql
+-- ✅ 已验证: 
+-- 1. DESCRIBE 确认字段存在
+-- 2. COUNT JOIN 确认有 12,345 行匹配
+-- 验证时间: 2025-01-15
+JOIN table_b b ON a.fk = b.pk
+```
+
+---
+
+### ❌ 案例 3：错误的版本推断
+
+**场景**: 需要使用某个 Python 库的方法
+
+**错误做法**:
+```python
+# "pandas 1.0+ 应该有这个方法"
+df.some_new_method()  # 可能不存在
+```
+
+**正确做法**:
+```python
+# 1. 验证方法存在
+import pandas as pd
+print(pd.__version__)  # 1.2.3
+print(hasattr(pd.DataFrame, 'some_new_method'))  # False
+
+# 2. 查找实际可用方法
+help(pd.DataFrame)
+# 或创建小测试
+df = pd.DataFrame({'a': [1,2,3]})
+df.<tab>  # 查看可用方法
+
+# 3. 使用验证过的方法
+df.actual_method()  ✅
+```
+
+---
+
+## 违规后果与自我纠正
+
+### 发现推断错误时
+
+1. **立即停止执行**
+2. **进行实际验证**
+3. **修复所有基于错误推断的代码**
+4. **记录错误案例**（如本次的 dispatch_id/mo_id 错误）
+5. **更新相关文档**
+
+### 自我检查触发器
+
+当发现自己在说以下话时，立即暂停验证：
+- "应该是..."
+- "通常是..."
+- "一般来说..."
+- "根据命名规范..."
+- "按照惯例..."
+- "肯定有..."
+
+**正确说法**:
+- "验证结果是..."
+- "实际查询显示..."
+- "测试确认..."
+- "DESCRIBE 输出..."
+
+---
+
+## 工具和命令速查
+
+### 数据库验证
+```sql
+-- 表结构
+DESCRIBE table_name;
+SHOW COLUMNS FROM table_name;
+SHOW CREATE TABLE table_name;
+
+-- 字段信息
+SELECT * FROM information_schema.columns 
+WHERE table_schema = 'db' AND table_name = 'table';
+
+-- 关联验证
+SELECT COUNT(*) FROM a JOIN b ON a.x = b.y;
+
+-- 数据抽样
+SELECT * FROM table LIMIT 10;
+SELECT DISTINCT field FROM table LIMIT 100;
+```
+
+### 代码验证
+```python
+# Python
+help(function)
+dir(object)
+hasattr(object, 'attr')
+inspect.signature(function)
+type(variable)
+
+# 测试导入
+python -c "import module; print(module.__version__)"
+```
+
+```bash
+# Shell
+which command
+type command
+command --version
+ls -la path
+test -f path && echo "exists"
+```
+
+### 系统验证
+```bash
+# 查找文件
+find / -name "filename"
+locate filename
+
+# 查看配置
+cat /proc/cpuinfo
+cat /etc/*-release
+env | grep VAR
+
+# 验证网络
+ping host
+curl -I url
+telnet host port
+```
+
+---
+
+## 总结
+
+### 核心要点
+
+1. **0% 推断原则**: 对于可验证的事实，不允许任何推断
+2. **100% 验证要求**: 所有关键信息必须通过实际验证获取
+3. **记录验证结果**: 验证过程和结果必须记录在代码注释或文档中
+4. **明确标注来源**: 区分"验证的事实"和"推断的假设"
+
+### 记忆口诀
+
+```
+能验证的必验证
+不验证的必标注
+推断要说推断
+验证要记录证
+```
+
+### 优先级
+
+```
+实际验证 > 明确标注的推断 > 无标注的推断（禁止）
+```
+
+---
+
+**本规则的元应用**: 本规则本身的所有案例（dispatch_id、mo_id）都是基于实际 MySQL DESCRIBE 验证得出，不是推断。
