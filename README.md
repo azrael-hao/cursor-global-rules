@@ -1,65 +1,114 @@
 # Cursor Global Rules
 
-Cursor IDE 全局规则文件，适用于所有项目。
+优化后的Cursor全局规则集合，所有规则自动在所有项目中生效。
 
-## 规则列表
+[English Version](./README_en.md)
 
-| 文件 | 类型 | alwaysApply | 说明 |
-|------|------|:-----------:|------|
-| `adaptive-thinking.mdc` | 规则 | ✅ | 强制双重思考验证：复杂任务必须进行至少2次深度思考分析 |
-| `context-compression.mdc` | 规则 | ✅ | 上下文接近容量上限时自动压缩，保持会话连续性 |
-| `decision-change-approval.mdc` | 规则 | ✅ | 决策变更和任务自然延续的双重标准判断规则 |
-| `no-inference-verification-required.mdc` | 规则 | ✅ | 禁止推断，强制验证：所有可验证事实必须通过实际查询确认 |
-| `remote-process-cleanup.mdc` | 规则 | ✅ | 终止本地进程时必须同时清理远端源头进程 |
-| `github-cli-setup.mdc` | Skill | ❌ | GitHub CLI 安装、代理配置与全局规则仓库同步方法 |
+## 📍 规则位置
 
-## 使用方法
+**全局Rules**: `~/.cursor/rules/` (Windows: `%USERPROFILE%\.cursor\rules\`)
 
-### 方式一：克隆仓库到全局规则目录
+## 📋 当前生效的Rules（9个）
 
+所有规则配置了`alwaysApply: true`，自动在所有对话中生效。
+
+### 🔴 最高优先级（1个）
+1. **00-CORE-ENFORCEMENT.mdc** (74行) - 核心强制执行规则，所有操作必须遵守
+
+### ⚠️ 核心原则（6个）
+2. **adaptive-thinking.mdc** (79行) - 自适应思考深度控制，复杂任务至少思考2次
+3. **no-assumption-core.mdc** (69行) - 零臆想原则，禁止假设和猜测
+4. **no-inference-verification-required.mdc** (92行) - 禁止推断，必须验证
+5. **task-vs-question-identification.mdc** (76行) - 任务与问题识别
+6. **decision-change-approval.mdc** (83行) - 决策变更审批规则
+7. **no-report-files.mdc** (85行) - 禁止生成报告文档
+
+### ℹ️ 工作流程（2个）
+8. **essential-problem-focus.mdc** (85行) - 本质问题聚焦（对比型问题）
+9. **auto-load-skills.mdc** (38行) - 自动加载Skills的核心原则
+
+## 🎯 Rules vs Skills 区分
+
+### Rules（本仓库）
+- **目的**：强制约束和规范
+- **触发**：`alwaysApply: true` 自动生效
+- **场景**：必须遵守的规则，如编码规范、禁止行为
+- **特点**：约束性、强制性、全局性
+
+### Skills（另一仓库）
+- **目的**：提供能力和方法
+- **触发**：用户@引用 或 description触发条件
+- **场景**：完成特定任务的技能
+- **特点**：工具性、可选性、任务导向
+- **仓库**：https://github.com/azrael-hao/cursor-coding-rules-skills
+
+## 🔄 如何修改Rules
+
+### 修改现有规则
 ```bash
-# Windows (Git Bash)
-cd ~/.cursor/rules/
-git init
-git remote add origin https://github.com/azrael-hao/cursor-global-rules.git
-git pull origin master
-
-# macOS/Linux
-cd ~/.cursor/rules/
-git init
-git remote add origin https://github.com/azrael-hao/cursor-global-rules.git
-git pull origin master
-```
-
-### 方式二：手动复制
-
-将 `.mdc` 文件放置到 Cursor 全局规则目录：
-
-- **Windows**: `%USERPROFILE%\.cursor\rules\`
-- **macOS/Linux**: `~/.cursor/rules/`
-
-### 代理环境
-
-如果需要通过代理访问 GitHub：
-
-```bash
+cd ~/.cursor/rules
+# 编辑需要修改的.mdc文件
+# 提交到GitHub备份
+git add .
+git commit -m "Update rules"
 export HTTPS_PROXY=http://127.0.0.1:7897
-export HTTP_PROXY=http://127.0.0.1:7897
+git push origin master
 ```
 
-详细代理配置与 GitHub CLI 使用方法参见 `github-cli-setup.mdc`。
-
-## 规则格式
-
-所有规则文件使用 `.mdc` 格式（Markdown + YAML front-matter）：
-
+### 添加新规则
+创建新的`.mdc`文件：
 ```yaml
 ---
-description: 规则简要描述
-globs:              # 留空表示不限文件类型
-alwaysApply: true   # true=自动生效, false=按需引用
+description: 规则描述
+globs:
+alwaysApply: true
 ---
+
+# 规则标题
+
+规则内容...
 ```
 
-- `alwaysApply: true` — 对所有项目自动生效的强制规则
-- `alwaysApply: false` — 按需引用的 Skill（如工具使用指南）
+## 📊 优化记录
+
+- **原始数量**: 13个规则文件
+- **优化后**: 9个规则文件
+- **精简度**: 31%
+- **优化原则**: 
+  - 删除了工具性内容（转为Skills）
+  - 删除了测试文件
+  - 保留了强制性约束规则
+
+## 🌐 GitHub备份
+
+- **仓库**: https://github.com/azrael-hao/cursor-global-rules
+- **分支**: master
+- **说明**: 所有Rules文件均有版本控制和历史记录
+
+## ⚠️ 重要提示
+
+1. **自动生效**: 所有规则自动在所有项目中生效，无需手动引用
+2. **单一数据源**: 全局rules是唯一的规则来源，项目不需要重复维护
+3. **保持同步**: 修改rules后推送到GitHub备份
+4. **行数控制**: 建议每个规则文件控制在80行以内最优
+
+## 📝 行数统计
+
+```
+00-CORE-ENFORCEMENT.mdc                74 lines ✅
+adaptive-thinking.mdc                  79 lines ✅
+auto-load-skills.mdc                   38 lines ✅
+decision-change-approval.mdc           83 lines ✅
+essential-problem-focus.mdc            85 lines ✅
+no-assumption-core.mdc                 69 lines ✅
+no-inference-verification-required.mdc 92 lines ✅
+no-report-files.mdc                    85 lines ✅
+task-vs-question-identification.mdc    76 lines ✅
+
+总计: 9个文件，681行
+平均: 75.7行/文件
+```
+
+---
+
+**最后更新**: 2026年4月27日
