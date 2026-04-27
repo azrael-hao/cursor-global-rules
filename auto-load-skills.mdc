@@ -1,0 +1,27 @@
+---
+description: 自动加载必须的Skills，确保核心规则始终生效
+globs:
+alwaysApply: true
+---
+
+# 必须加载的Skills
+
+在每次对话开始时，自动加载以下核心Skills：
+
+## 核心强制Skills
+
+### @coding-rules-core-enforcement
+核心强制执行规则，最高优先级，所有操作必须遵守
+
+### @adaptive-thinking  
+自适应思考深度控制，确保复杂问题得到充分分析
+
+## 使用方式
+
+在开始任何任务前，自动加载上述Skills的核心原则：
+1. 零臆想原则（禁止假设和猜测）
+2. 任务识别（区分执行类和回答类）
+3. 决策审批（需要选择时使用AskQuestion工具）
+4. 深度思考（复杂任务至少思考2次）
+
+这些原则已整合到本规则中，无需显式引用Skills。
