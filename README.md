@@ -8,7 +8,7 @@
 
 **全局Rules**: `~/.cursor/rules/` (Windows: `%USERPROFILE%\.cursor\rules\`)
 
-## 📋 当前生效的Rules（9个）
+## 📋 当前生效的Rules（8个）
 
 所有规则配置了`alwaysApply: true`，自动在所有对话中生效。
 
@@ -23,9 +23,8 @@
 6. **decision-change-approval.mdc** (83行) - 决策变更审批规则
 7. **no-report-files.mdc** (85行) - 禁止生成报告文档
 
-### ℹ️ 工作流程（2个）
+### ℹ️ 工作流程（1个）
 8. **essential-problem-focus.mdc** (85行) - 本质问题聚焦（对比型问题）
-9. **auto-load-skills.mdc** (38行) - 自动加载Skills的核心原则
 
 ## 🎯 Rules vs Skills 区分
 
@@ -71,13 +70,14 @@ alwaysApply: true
 
 ## 📊 优化记录
 
-- **原始数量**: 13个规则文件
-- **优化后**: 9个规则文件
-- **精简度**: 31%
+- **第一轮优化**: 13个 → 9个规则文件（删除工具性内容和测试文件）
+- **第二轮优化**: 9个 → 8个规则文件（删除重复摘要文件）
+- **总精简度**: 38%
 - **优化原则**: 
   - 删除了工具性内容（转为Skills）
-  - 删除了测试文件
+  - 删除了测试文件和重复摘要
   - 保留了强制性约束规则
+  - 每个原则只保留一个版本
 
 ## 🌐 GitHub备份
 
@@ -91,13 +91,13 @@ alwaysApply: true
 2. **单一数据源**: 全局rules是唯一的规则来源，项目不需要重复维护
 3. **保持同步**: 修改rules后推送到GitHub备份
 4. **行数控制**: 建议每个规则文件控制在80行以内最优
+5. **无重复**: 每个原则只有一个完整版本，避免维护冗余
 
 ## 📝 行数统计
 
 ```
 00-CORE-ENFORCEMENT.mdc                74 lines ✅
 adaptive-thinking.mdc                  79 lines ✅
-auto-load-skills.mdc                   38 lines ✅
 decision-change-approval.mdc           83 lines ✅
 essential-problem-focus.mdc            85 lines ✅
 no-assumption-core.mdc                 69 lines ✅
@@ -105,8 +105,8 @@ no-inference-verification-required.mdc 92 lines ✅
 no-report-files.mdc                    85 lines ✅
 task-vs-question-identification.mdc    76 lines ✅
 
-总计: 9个文件，681行
-平均: 75.7行/文件
+总计: 8个文件，643行
+平均: 80.4行/文件
 ```
 
 ---
