@@ -26,7 +26,7 @@
 9. **plan-approval-mandatory.mdc** (447行) - 🔴 方案执行前强制确认
 10. **ask-timeout-retry-mandatory.mdc** (420行) - 🔴 AskQuestion超时必须重新提问（NEW）
 11. **task-vs-question-identification.mdc** (76行) - 任务与问题识别
-12. **decision-change-approval.mdc** (83行) - 决策变更审批规则
+12. **decision-change-approval.mdc** (323行) - 🔴 所有用户选择必须使用AskQuestion工具
 13. **no-report-files.mdc** (85行) - 禁止生成报告文档
 14. **plan-before-implementation.mdc** (126行) - 计划优先原则，复杂任务必须先规划
 
@@ -121,7 +121,7 @@ alwaysApply: true
 adaptive-thinking.mdc                   79 lines ✅
 ask-timeout-retry-mandatory.mdc        420 lines 🔴
 data-driven-decisions.mdc              218 lines ⚠️⚠️
-decision-change-approval.mdc            83 lines ✅
+decision-change-approval.mdc           323 lines 🔴
 essential-problem-focus.mdc             85 lines ✅
 no-assumption-core.mdc                  69 lines ✅
 no-inference-verification-required.mdc  92 lines ✅
@@ -134,8 +134,8 @@ solve-not-suppress.mdc                 287 lines ⚠️⚠️
 task-vs-question-identification.mdc     76 lines ✅
 zero-speculation-mandatory.mdc         348 lines 🔴
 
-总计: 16个文件，3042行
-平均: 190.1行/文件
+总计: 16个文件，3282行
+平均: 205.1行/文件
 ```
 
 **说明**: 
