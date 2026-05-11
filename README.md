@@ -1,4 +1,4 @@
-# Cursor Global Rules
+# Cursor Global Rules (中文版)
 
 优化后的Cursor全局规则集合，所有规则自动在所有项目中生效。
 
@@ -6,20 +6,24 @@
 
 ## 📍 规则位置
 
-**全局Rules**: `~/.cursor/rules/` (Windows: `%USERPROFILE%\.cursor\rules\`)
+**英文规则（默认）**: `~/.cursor/rules/*.mdc`  
+**中文规则**: `~/.cursor/rules/zh/*.mdc`
+
+Windows路径: `%USERPROFILE%\.cursor\rules\`
 
 ## 📊 规则统计
 
-### 中文规则（17个）
+### 英文规则（17个 - 根目录）
+- 位置：`~/.cursor/rules/*.mdc`
 - 总行数：**521行**
 - 平均行/文件：**30.6行**
 - 最大规则：`zero-speculation-mandatory.mdc`（70行）
 - 最小规则：`essential-problem-focus.mdc`（17行）
 
-### 英文规则（17个）
-- 位置：`~/.cursor/rules/en/`
+### 中文规则（17个 - zh目录）
+- 位置：`~/.cursor/rules/zh/*.mdc`
 - 总行数：**521行**
-- 与中文版完全对应
+- 与英文版完全对应
 
 ### 精简效果
 - 原始总行数：**4,166行**
@@ -55,9 +59,21 @@
 16. **essential-problem-focus.mdc** (17行) - 本质问题聚焦
 17. **rules-self-check.mdc** (24行) - Rules自我监督机制
 
-## 🌍 国际化支持
+## 🌍 目录结构
 
-英文版规则位于 `~/.cursor/rules/en/` 目录，文件名与中文版保持一致。
+```
+~/.cursor/rules/
+├── *.mdc          (17个英文规则 - 默认, 521行)
+├── zh/
+│   └── *.mdc      (17个中文规则, 521行)
+├── README.md      (中文文档)
+└── README_en.md   (英文文档)
+```
+
+**说明**：
+- 英文规则在根目录，作为默认规则（国际通用）
+- 中文规则在zh/子目录，便于中文用户查看
+- 两个版本内容完全对应，可根据需要切换使用
 
 ## 🎯 使用指南
 
@@ -77,10 +93,10 @@
 - **重大精简**：从4166行精简到521行，减少87.5%
 - **策略**：删除冗余示例，合并重复内容，保留核心强制要求
 - **效果**：保持强效控制，提升加载和理解效率
-- **国际化**：创建17个英文版规则，统一放在en/文件夹
-- **结构优化**：
-  - 中文规则：`~/.cursor/rules/*.mdc`
-  - 英文规则：`~/.cursor/rules/en/*.mdc`
+- **国际化**：创建17个英文版规则
+- **目录结构优化**：
+  - 英文规则（默认）：`~/.cursor/rules/*.mdc`
+  - 中文规则：`~/.cursor/rules/zh/*.mdc`
 - **精简对比**：
   - 00-CORE-ENFORCEMENT: 388行 → 49行（减少87.4%）
   - zero-speculation-mandatory: 316行 → 70行（减少77.8%）

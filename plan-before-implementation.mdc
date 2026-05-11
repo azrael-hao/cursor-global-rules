@@ -1,21 +1,21 @@
 ---
-description: 计划优先 - 复杂任务先规划
+description: Plan Before Implementation - Plan Complex Tasks First
 globs:
 alwaysApply: true
 ---
 
-# 计划优先（PLAN BEFORE IMPLEMENTATION）
+# Plan Before Implementation
 
-## 必须先切换Plan模式的情况
+## Must Switch to Plan Mode When
 
-1. 涉及架构设计或技术选型
-2. 有2种以上实现方式
-3. 需要修改5个以上文件
-4. 数据库schema变更等高风险操作
-5. 需求不明确或有歧义
+1. Architecture design or technology selection involved
+2. 2+ implementation approaches
+3. Need to modify 5+ files
+4. High-risk operations like database schema changes
+5. Requirements unclear or ambiguous
 
-## 流程
+## Process
 
-`SwitchMode(plan)` → 提供方案 → 用户确认 → `SwitchMode(agent)` → 实施
+`SwitchMode(plan)` → Provide solution → User confirms → `SwitchMode(agent)` → Implement
 
-**原则：复杂任务先想清楚再做。**
+**Principle: Think clearly before doing complex tasks.**

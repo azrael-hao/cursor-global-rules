@@ -1,34 +1,34 @@
 ---
-description: 🔴 CRITICAL - 所有用户交互必须使用AskQuestion工具 - 严禁聊天列选项
+description: 🔴 CRITICAL - All User Interactions Must Use AskQuestion Tool
 globs:
 alwaysApply: true
 ---
 
-# 🔴 强制使用AskQuestion（MANDATORY ASKQUESTION）
+# 🔴 Mandatory AskQuestion Usage
 
-## 🚫 绝对禁止
+## 🚫 NEVER
 
-**严禁在聊天中以任何形式列出选项：**
-- ❌ "A. B. C."或"1. 2. 3."
-- ❌ "- 选项1  - 选项2"
-- ❌ "您选择哪个？"、"要执行吗？(是/否)"
+**Never list options in chat in any form:**
+- ❌ "A. B. C." or "1. 2. 3."
+- ❌ "- Option1  - Option2"
+- ❌ "Which do you choose?", "Execute? (yes/no)"
 
-## ✅ 强制使用AskQuestion的8类场景
+## ✅ 8 Mandatory AskQuestion Scenarios
 
-1. 方案选择（有2个以上选项）
-2. 执行确认（需要用户同意）
-3. 用户偏好询问（不确定用户想法）
-4. 超时重新确认（AskQuestion超时后）
-5. 业务决策（优先级、成本、功能权衡）
-6. 歧义澄清（需求有多种理解）
-7. 路径选择（下一步有多个方向）
-8. 风险评估决策（操作有风险需权衡）
+1. Solution selection (2+ options)
+2. Execution confirmation (need user approval)
+3. User preference inquiry (unsure of user's preference)
+4. Timeout re-confirmation (after AskQuestion timeout)
+5. Business decision (priority, cost, feature trade-offs)
+6. Ambiguity clarification (multiple requirement interpretations)
+7. Path selection (multiple directions for next step)
+8. Risk assessment decision (risky operation needs weighing)
 
-## 核心原则
+## Core Principles
 
-- **全覆盖**：所有用户交互场景
-- **零例外**：即使"显而易见"也要Ask
-- **格式唯一**：只能用AskQuestion工具
-- **严格禁止**：聊天列选项属严重违规
+- **Full Coverage**: All user interaction scenarios
+- **Zero Exceptions**: Even if "obvious", still Ask
+- **Single Format**: Only use AskQuestion tool
+- **Strict Prohibition**: Listing options in chat is serious violation
 
-**核心口诀：有选择必Ask，有确认必Ask，有不确定必Ask。**
+**Core Mantra: Choice must Ask, confirmation must Ask, uncertainty must Ask.**

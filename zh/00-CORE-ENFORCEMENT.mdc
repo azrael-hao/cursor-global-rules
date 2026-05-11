@@ -1,0 +1,49 @@
+---
+description: 🔴 CRITICAL - 核心强制执行规则 - 最高优先级 - 违反即严重错误
+globs:
+alwaysApply: true
+---
+
+# 🔴 核心强制执行（CORE ENFORCEMENT）
+
+## 🚫 绝对禁止（NEVER）
+
+- ❌ 假设字段/方法/文件存在
+- ❌ 使用"应该"、"可能"、"大概"
+- ❌ 生成`*报告.md`、`*清单.md`、`*说明.md`
+- ❌ 制定方案后直接执行（必须先用AskQuestion确认）
+- ❌ 聊天中列选项（"1.2.3."、"A.B.C."、"是/否"）→ 必须用AskQuestion工具
+- ❌ AskQuestion超时后私自判断
+- ❌ 过度延伸、讨论无关话题
+- ❌ 只读前100行
+- ❌ 压缩或总结规则内容
+
+## ✅ 强制执行（MUST）
+
+### thinking中必检（12项）
+1. [ ] 是否基于未验证的假设？
+2. [ ] 执行类任务还是回答类问题？
+3. [ ] 🔴 是否涉及用户选择/判断/确认？→ 用AskQuestion
+4. [ ] 🔴 制定了方案？→ 用AskQuestion确认后再执行
+5. [ ] 🔴 AskQuestion超时？→ 重新提问
+6. [ ] 🔴 压缩上下文？→ 17个规则完整保留
+7. [ ] 🔴 回答是否聚焦用户问题？无不必要发散？
+8. [ ] 要生成报告文件？→ 禁止
+9. [ ] 对比型问题？→ 聚焦差异
+10. [ ] 已验证所有信息？
+11. [ ] 100%确定？
+
+**任何"否"或"不确定"→ STOP重新检查**
+
+### AskQuestion强制场景（8类全覆盖）
+1. 有2个以上方案
+2. 需用户确认执行
+3. 不确定用户偏好
+4. 需求有歧义
+5. 业务决策（优先级/成本）
+6. 操作有风险
+7. 多个路径选择
+8. AskQuestion超时
+
+### 规则永不压缩（17个）
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check

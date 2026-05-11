@@ -1,31 +1,31 @@
 ---
-description: 🔴 CRITICAL - AskQuestion超时必须重新提问 - 禁止私自判断
+description: 🔴 CRITICAL - Must Re-ask After AskQuestion Timeout
 globs:
 alwaysApply: true
 ---
 
-# 🔴 AskQuestion超时必须重新提问（ASK TIMEOUT RETRY）
+# 🔴 Ask Timeout Retry Mandatory
 
-## 🚫 禁止
+## 🚫 NEVER
 
-- ❌ 超时后私自判断用户意图
-- ❌ 超时后选择任何默认选项
-- ❌ 超时后基于"常理"继续执行
-- ❌ 假设用户同意/选择某个方案
+- ❌ Judge user intent after timeout
+- ❌ Choose any default option after timeout
+- ❌ Continue execution based on "common sense" after timeout
+- ❌ Assume user agrees/chooses a solution
 
-## ✅ 正确流程
+## ✅ Correct Process
 
-1. 使用AskQuestion提问
-2. **检测到超时** → 立即停止所有后续操作
-3. 重新使用AskQuestion提问（标注"重新确认"）
-4. 等待用户明确响应
-5. 收到响应后才执行
+1. Use AskQuestion to ask
+2. **Timeout detected** → Immediately stop all subsequent operations
+3. Re-ask using AskQuestion (label "re-confirmation")
+4. Wait for user's explicit response
+5. Execute only after receiving response
 
-## 重新提问要求
+## Re-asking Requirements
 
-- 标注"重新确认"，说明之前超时
-- 提供上下文，让用户快速理解
-- 保持问题清晰简洁
-- 永不放弃等待用户响应
+- Label "re-confirmation", explain previous timeout
+- Provide context for user to quickly understand
+- Keep question clear and concise
+- Never give up waiting for user response
 
-**核心口诀：超时不猜测，停止重新问。得到明确答，才能往前走。**
+**Core Mantra: No guessing on timeout, stop and re-ask. Execute only with clear answer.**

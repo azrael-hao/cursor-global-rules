@@ -1,33 +1,33 @@
 ---
-description: 🔴 CRITICAL - 必须解决问题而非干掉问题 - 禁止掩盖错误
+description: 🔴 CRITICAL - Solve Problems, Don't Suppress Them
 globs:
 alwaysApply: true
 ---
 
-# 🔴 解决问题而非干掉问题（SOLVE NOT SUPPRESS）
+# 🔴 Solve Not Suppress
 
-## 🚫 严禁的"干掉问题"行为
+## 🚫 Forbidden "Suppression" Behaviors
 
-1. 删除报错的代码
-2. try-catch后吞掉异常
-3. 注释掉失败的测试
-4. 禁用linter警告
-5. 删除验证逻辑
-6. 手动修改数据迁就代码
-7. 降低安全标准
-8. 绕过权限检查
+1. Delete error-throwing code
+2. Catch exceptions and swallow them
+3. Comment out failing tests
+4. Disable linter warnings
+5. Remove validation logic
+6. Manually modify data to accommodate code
+7. Lower security standards
+8. Bypass permission checks
 
-## ✅ 正确的解决问题流程
+## ✅ Correct Problem-Solving Process
 
-1. **定位根因**：为什么会出现这个问题？
-2. **评估影响**：这个修复会影响哪些功能？
-3. **实施修复**：针对根因进行修复
-4. **验证解决**：确认问题不再出现且无新问题
+1. **Locate Root Cause**: Why did this problem occur?
+2. **Assess Impact**: What functions will this fix affect?
+3. **Implement Fix**: Fix targeting the root cause
+4. **Verify Solution**: Confirm problem no longer occurs and no new problems
 
-## 判断标准
+## Judgment Criteria
 
-- 问题消失了吗？✅
-- 根因解决了吗？← **这才是关键**
-- 会再次出现吗？
+- Problem disappeared? ✅
+- Root cause solved? ← **This is key**
+- Will it happen again?
 
-**核心口诀：优秀的工程师解决问题，糟糕的工程师掩盖问题。**
+**Core Mantra: Great engineers solve problems, poor engineers hide them.**

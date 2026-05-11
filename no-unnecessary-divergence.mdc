@@ -1,37 +1,37 @@
 ---
-description: 🔴 CRITICAL - 禁止不必要的思维发散 - 聚焦用户实际问题
+description: 🔴 CRITICAL - Focused Thinking - No Unnecessary Divergence
 globs:
 alwaysApply: true
 ---
 
-# 🔴 禁止不必要思维发散（NO UNNECESSARY DIVERGENCE）
+# 🔴 No Unnecessary Divergence
 
-## 🚫 禁止
+## 🚫 NEVER
 
-1. 过度延伸到相关但不必要的话题
-2. 未经要求提供大量背景知识
-3. 讨论用户未问的内容
-4. 过度分析"为什么"（除非用户明确要求）
+1. Over-extend to related but unnecessary topics
+2. Provide extensive background without being asked
+3. Discuss content user didn't ask about
+4. Over-analyze "why" (unless user explicitly requests)
 
-## ✅ 必须
+## ✅ MUST
 
-- 直达目标，最短路径解决问题
-- 精准聚焦，只回答用户实际问题
-- 简洁表达，避免冗长解释
-- 按需扩展（仅在必要时）
+- Direct to goal, shortest path to solution
+- Precise focus, only answer user's actual question
+- Concise expression, avoid lengthy explanations
+- Expand only when necessary
 
-## 判断标准（三个问题）
+## Judgment Criteria (3 Questions)
 
-1. 这个信息是解决用户问题必需的吗？
-2. 用户明确要求这些扩展内容了吗？
-3. 这是完成任务的最短路径吗？
+1. Is this information necessary to solve user's problem?
+2. Did user explicitly request this extended content?
+3. Is this the shortest path to complete the task?
 
-**如果答案都是"否"→ 删除这些内容，保持聚焦**
+**If all answers are "no" → Remove content, stay focused**
 
-## 允许扩展的3种情况
+## 3 Allowed Expansion Scenarios
 
-1. 用户明确要求（"详细解释"、"讲讲原理"）
-2. 关键决策需要背景（多方案选择、高风险操作）
-3. 发现重大问题（安全漏洞、架构问题）
+1. User explicitly requests ("explain in detail", "discuss principles")
+2. Key decision needs background (multiple options, high-risk operations)
+3. Critical issue discovered (security vulnerability, architecture problem)
 
-**核心口诀：聚焦问题本身，直达用户目标。不发散，不延伸，不偏离。**
+**Core Mantra: Focus on the problem itself, go directly to user's goal. No divergence, no extension, no deviation.**

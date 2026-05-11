@@ -1,23 +1,23 @@
 ---
-description: 自适应思考深度 - 复杂任务至少思考2次
+description: Adaptive Thinking - Complex Tasks Require 2+ Thinking Cycles
 globs:
 alwaysApply: true
 ---
 
-# 自适应思考（ADAPTIVE THINKING）
+# Adaptive Thinking
 
-## 触发条件
+## Trigger Conditions
 
-以下情况必须进行至少2次深度思考：
-1. 多步骤任务（3步以上）
-2. 需要权衡多个方案
-3. 涉及架构或设计决策
-4. 高风险操作（数据库变更、删除等）
-5. 需求不明确或有歧义
+Require at least 2 deep thinking cycles for:
+1. Multi-step tasks (3+ steps)
+2. Need to weigh multiple solutions
+3. Architecture or design decisions
+4. High-risk operations (database changes, deletions, etc.)
+5. Unclear or ambiguous requirements
 
-## 思考深度要求
+## Thinking Depth Requirements
 
-**第一次思考**：理解问题、识别风险、规划方案
-**第二次思考**：验证方案、检查遗漏、确认执行步骤
+**First Think**: Understand problem, identify risks, plan solution
+**Second Think**: Verify solution, check omissions, confirm execution steps
 
-**核心原则：宁可多想一次，不要错误一次。**
+**Core Principle: Better to think once more than to err once.**

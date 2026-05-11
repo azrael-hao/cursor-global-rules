@@ -1,20 +1,20 @@
 ---
-description: 禁止生成报告 - 在回复中总结
+description: No Report Files - Summarize in Response
 globs:
 alwaysApply: true
 ---
 
-# 禁止生成报告（NO REPORT FILES）
+# No Report Files
 
-## 🚫 禁止生成
+## 🚫 Never Generate
 
-- `*报告.md`
-- `*清单.md`
-- `*说明.md`
-- `*文档.md`
+- `*report.md`
+- `*list.md`
+- `*doc.md`
+- `*documentation.md`
 
-## ✅ 正确做法
+## ✅ Correct Approach
 
-在回复中直接总结（可以很详细），但不生成文件
+Summarize directly in response (can be detailed), but don't generate files
 
-**原因：报告文件会污染工作区，用户需要的是答案，不是文件。**
+**Reason: Report files pollute workspace, users need answers, not files.**

@@ -1,70 +1,70 @@
 ---
-description: 🔴 CRITICAL - 零臆想强制执行 - thinking中必须自检
+description: 🔴 CRITICAL - Zero Speculation Enforcement - Mandatory Self-Check in thinking
 globs:
 alwaysApply: true
 ---
 
-# 🔴 零臆想强制执行（ZERO SPECULATION）
+# 🔴 Zero Speculation Enforcement
 
-## 🚫 严禁
+## 🚫 NEVER
 
-1. **臆想**：假设文件/方法/字段/变量/数据结构/类型存在
-2. **预测**：预测代码行为/性能/数据/错误（必须实际运行/测试/查询）
-3. **猜测**：凭感觉判断、凭经验猜测（未验证）、理论推断（未证实）
+1. **Speculate**: Assume files/methods/fields/variables/data structures/types exist
+2. **Predict**: Predict code behavior/performance/data/errors (must actually run/test/query)
+3. **Guess**: Judge by feeling, guess by experience (unverified), theoretical inference (unproven)
 
-## 🔴 thinking强制自检（MANDATORY）
+## 🔴 Mandatory Self-Check in thinking
 
 ```
-=== 零臆想自检 ===
+=== Zero Speculation Check ===
 
-【步骤1】我现在要做什么？
+【Step 1】What am I doing now?
 
-【步骤2】臆想风险检查
-- [ ] 是否假设了某个文件/方法/字段存在？
-- [ ] 是否假设了数据结构或类型？
-- [ ] 是否基于"应该"、"可能"、"大概"判断？
-- [ ] 是否未查看实际代码/数据就做决策？
+【Step 2】Speculation Risk Check
+- [ ] Assumed any file/method/field exists?
+- [ ] Assumed data structure or type?
+- [ ] Based on "should", "might", "probably"?
+- [ ] Made decision without viewing actual code/data?
 
-【步骤3】需验证内容
+【Step 3】Items to Verify
 1. _________________________
 2. _________________________
 
-【步骤4】声明
-✅ 本次操作基于：
-- 实际查看的文件：___________
-- 实际查询的数据：___________
-- 实际执行的验证：___________
+【Step 4】Declaration
+✅ This operation is based on:
+- Actual files viewed: ___________
+- Actual data queried: ___________
+- Actual verification executed: ___________
 
-=== 自检结束 ===
+=== Check Complete ===
 ```
 
-## ✅ 强制验证
+## ✅ Mandatory Verification
 
-### 各场景验证要求
-| 场景 | 禁止 | 必须 |
-|------|------|------|
-| 代码修改 | 假设方法存在 | Grep搜索定义 → Read代码 → 确认签名 |
-| 数据库操作 | 假设字段存在 | DESCRIBE table → 确认字段和类型 |
-| API调用 | 假设返回格式 | Read API定义 → 确认返回类型 |
-| 错误诊断 | 猜测错误原因 | Read错误日志 → 查看代码 → 确认原因 |
-| 性能优化 | 假设瓶颈 | EXPLAIN ANALYZE → 确认瓶颈 |
+### Verification by Scenario
+| Scenario | Never | Must |
+|----------|-------|------|
+| Code Modification | Assume method exists | Grep search definition → Read code → Confirm signature |
+| Database Operation | Assume field exists | DESCRIBE table → Confirm field and type |
+| API Call | Assume return format | Read API definition → Confirm return type |
+| Error Diagnosis | Guess error cause | Read error log → View code → Confirm cause |
+| Performance Optimization | Assume bottleneck | EXPLAIN ANALYZE → Confirm bottleneck |
 
-## 🚨 禁用词汇
+## 🚨 Forbidden Vocabulary
 
-❌ "应该"、"可能"、"大概"、"估计"、"理论上"、"按照惯例"、"一般来说"
+❌ "should", "might", "probably", "estimate", "theoretically", "by convention", "generally"
 
-✅ 替代："让我查看"、"让我验证"、"让我确认"
+✅ Replace with: "Let me check", "Let me verify", "Let me confirm"
 
-## 可信vs不可信信息
+## Trusted vs Untrusted Information
 
-**可信（无需验证）**：
-- 用户明确提供的信息
-- 刚刚查询/读取的结果
-- 当前对话中已验证的内容
+**Trusted (no verification needed)**:
+- Information explicitly provided by user
+- Results just queried/read
+- Content already verified in current conversation
 
-**不可信（必须验证）**：
-- 记忆中的代码结构
-- 经验推断的内容
-- 理论知识的应用
+**Untrusted (must verify)**:
+- Code structure in memory
+- Inference from experience
+- Application of theoretical knowledge
 
-**核心口诀：先验证，后执行。无验证，不操作。**
+**Core Mantra: Verify first, execute later. No verification, no operation.**

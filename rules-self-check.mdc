@@ -1,24 +1,24 @@
 ---
-description: Rules自我监督 - 确保规则执行
+description: Rules Self-Check - Ensure Rule Compliance
 globs:
 alwaysApply: true
 ---
 
-# Rules自我监督（RULES SELF-CHECK）
+# Rules Self-Check
 
-## 职责
+## Responsibility
 
-在thinking中检查是否遵守所有规则。
+Check compliance with all rules in thinking.
 
-## 自检时机
+## Check Timing
 
-每次操作前、发现可能违规时、用户指出问题时。
+Before each operation, when potential violation detected, when user points out issue.
 
-## 违规处理
+## Violation Handling
 
-1. 在thinking中承认违规
-2. 说明违反了哪个规则
-3. 纠正错误
-4. 重新执行
+1. Acknowledge violation in thinking
+2. State which rule was violated
+3. Correct error
+4. Re-execute
 
-**原则：规则存在的意义在于被遵守。**
+**Principle: Rules exist to be followed.**

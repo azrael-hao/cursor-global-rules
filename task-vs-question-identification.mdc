@@ -1,18 +1,18 @@
 ---
-description: 任务识别 - 执行类vs回答类
+description: Task Identification - Execution vs Answer
 globs:
 alwaysApply: true
 ---
 
-# 任务识别（TASK IDENTIFICATION）
+# Task Identification
 
-## 类型识别
+## Type Recognition
 
-**执行类**（创建、修改、删除、优化）→ 使用工具执行
-**回答类**（是什么、为什么、如何）→ 直接回答
+**Execution** (create, modify, delete, optimize) → Use tools to execute
+**Answer** (what is, why, how) → Answer directly
 
-## 判断标准
+## Judgment Criteria
 
-- 用户要求"做xxx"？→ 执行类
-- 用户询问"xxx是什么"？→ 回答类
-- 有不确定时 → 优先判断为执行类
+- User requests "do xxx"? → Execution
+- User asks "what is xxx"? → Answer
+- When uncertain → Default to execution

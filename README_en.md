@@ -1,4 +1,4 @@
-# Cursor Global Rules
+# Cursor Global Rules (English Version)
 
 Optimized Cursor global rules set, all rules automatically apply to all projects.
 
@@ -6,20 +6,24 @@ Optimized Cursor global rules set, all rules automatically apply to all projects
 
 ## 📍 Rules Location
 
-**Global Rules**: `~/.cursor/rules/` (Windows: `%USERPROFILE%\.cursor\rules\`)
+**English Rules (Default)**: `~/.cursor/rules/*.mdc`  
+**Chinese Rules**: `~/.cursor/rules/zh/*.mdc`
+
+Windows Path: `%USERPROFILE%\.cursor\rules\`
 
 ## 📊 Statistics
 
-### Chinese Rules (17)
+### English Rules (17 - Root Directory)
+- Location: `~/.cursor/rules/*.mdc`
 - Total Lines: **521 lines**
 - Average Lines/File: **30.6 lines**
 - Largest Rule: `zero-speculation-mandatory.mdc` (70 lines)
 - Smallest Rule: `essential-problem-focus.mdc` (17 lines)
 
-### English Rules (17)
-- Location: `~/.cursor/rules/en/`
+### Chinese Rules (17 - zh Directory)
+- Location: `~/.cursor/rules/zh/*.mdc`
 - Total Lines: **521 lines**
-- Fully corresponds to Chinese version
+- Fully corresponds to English version
 
 ### Streamlining Effect
 - Original Total Lines: **4,166 lines**
@@ -55,9 +59,21 @@ All rules configured with `alwaysApply: true`, automatically active in all conve
 16. **essential-problem-focus.mdc** (17 lines) - Essential problem focus
 17. **rules-self-check.mdc** (24 lines) - Rules self-supervision mechanism
 
-## 🌍 Internationalization Support
+## 🌍 Directory Structure
 
-English version rules are located in `~/.cursor/rules/en/` directory, with filenames matching the Chinese version.
+```
+~/.cursor/rules/
+├── *.mdc          (17 English rules - default, 521 lines)
+├── zh/
+│   └── *.mdc      (17 Chinese rules, 521 lines)
+├── README.md      (Chinese documentation)
+└── README_en.md   (English documentation)
+```
+
+**Note**:
+- English rules in root directory as default (international standard)
+- Chinese rules in zh/ subdirectory for Chinese users
+- Two versions fully correspond, switch as needed
 
 ## 🎯 Usage Guide
 
@@ -77,10 +93,10 @@ All rules automatically apply in all conversations via `alwaysApply: true`, no m
 - **Major Streamlining**: From 4166 lines to 521 lines, 87.5% reduction
 - **Strategy**: Remove redundant examples, merge duplicate content, keep core mandatory requirements
 - **Effect**: Maintain strong control, improve loading and comprehension efficiency
-- **Internationalization**: Created 17 English version rules, unified in en/ folder
-- **Structure Optimization**:
-  - Chinese rules: `~/.cursor/rules/*.mdc`
-  - English rules: `~/.cursor/rules/en/*.mdc`
+- **Internationalization**: Created 17 English version rules
+- **Directory Structure Optimization**:
+  - English rules (default): `~/.cursor/rules/*.mdc`
+  - Chinese rules: `~/.cursor/rules/zh/*.mdc`
 - **Streamlining Comparison**:
   - 00-CORE-ENFORCEMENT: 388 lines → 49 lines (87.4% reduction)
   - zero-speculation-mandatory: 316 lines → 70 lines (77.8% reduction)

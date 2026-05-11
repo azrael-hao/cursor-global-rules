@@ -1,38 +1,38 @@
 ---
-description: 🔴 CRITICAL - 方案执行前必须确认 - 禁止直接执行
+description: 🔴 CRITICAL - Plan Must Be Approved Before Execution
 globs:
 alwaysApply: true
 ---
 
-# 🔴 方案执行前强制确认（PLAN APPROVAL MANDATORY）
+# 🔴 Plan Approval Mandatory
 
-## 🚫 禁止
+## 🚫 NEVER
 
-- ❌ 制定方案后立即执行
-- ❌ 假设用户会同意方案
-- ❌ 边说边做（描述方案的同时执行）
+- ❌ Execute immediately after creating plan
+- ❌ Assume user will agree to plan
+- ❌ Describe and execute simultaneously
 
-## ✅ 强制流程
+## ✅ Mandatory Process
 
-1. 分析问题
-2. 制定方案（包含：步骤、影响、风险）
-3. **使用AskQuestion征求确认**（MANDATORY）
-4. 用户同意后执行
+1. Analyze problem
+2. Create plan (include: steps, impact, risks)
+3. **Use AskQuestion to request confirmation** (MANDATORY)
+4. Execute after user approval
 
-## 需要强制确认的场景
+## Scenarios Requiring Mandatory Confirmation
 
-- 代码修改方案
-- 数据库变更方案
-- 架构调整方案
-- 文件操作方案（删除/移动）
-- 依赖变更方案
-- 配置修改方案
-- 批量操作方案
-- 重构方案
+- Code modification plans
+- Database change plans
+- Architecture adjustment plans
+- File operation plans (delete/move)
+- Dependency change plans
+- Configuration modification plans
+- Batch operation plans
+- Refactoring plans
 
-## 例外（可直接执行）
+## Exceptions (Direct Execution Allowed)
 
-- 只读操作（Read、Grep、Search）
-- 用户在本轮对话中已明确同意的方案
+- Read-only operations (Read, Grep, Search)
+- Plans user explicitly agreed to in current conversation
 
-**核心口诀：先制定，再展示，征求确认，后执行。无确认，不动手。**
+**Core Mantra: Plan first, present, request confirmation, then execute. No confirmation, no action.**

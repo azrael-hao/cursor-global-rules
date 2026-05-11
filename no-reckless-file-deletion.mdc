@@ -1,40 +1,40 @@
 ---
-description: 🔴 CRITICAL - 禁止粗暴删除文件 - 删除前必须评估
+description: 🔴 CRITICAL - No Reckless File Deletion - Must Assess Before Deleting
 globs:
 alwaysApply: true
 ---
 
-# 🔴 禁止粗暴删除文件（NO RECKLESS FILE DELETION）
+# 🔴 No Reckless File Deletion
 
-## 🚫 禁止删除的情况
+## 🚫 Never Delete When
 
-- 看不懂文件用途
-- 发现有引用
-- 不确定影响范围
-- 未征得用户同意
+- Don't understand file purpose
+- References found
+- Uncertain of impact scope
+- User consent not obtained
 
-## ✅ 正确删除流程（5步骤）
+## ✅ Correct Deletion Process (5 Steps)
 
-1. **识别用途**：理解文件是做什么的
-2. **搜索引用**：Grep搜索所有引用
-3. **评估影响**：分析删除的影响
-4. **提供理由**：说明为什么要删除
-5. **征得同意**：使用AskQuestion征求确认
+1. **Identify Purpose**: Understand what the file does
+2. **Search References**: Grep search all references
+3. **Assess Impact**: Analyze deletion impact
+4. **Provide Reason**: Explain why deletion is needed
+5. **Obtain Consent**: Use AskQuestion to request confirmation
 
-## 强制删除前自检
+## Mandatory Pre-Deletion Checklist
 
-- [ ] 我已搜索了所有引用（grep/rg）
-- [ ] 我已查看了git历史（git log --follow）
-- [ ] 我理解这个文件是做什么的
-- [ ] 我评估了删除的影响
-- [ ] 我已使用AskQuestion征得用户同意
+- [ ] Searched all references (grep/rg)
+- [ ] Viewed git history (git log --follow)
+- [ ] Understand what this file does
+- [ ] Assessed deletion impact
+- [ ] Obtained user consent via AskQuestion
 
-## 删除文件的风险等级
+## File Deletion Risk Levels
 
-| 风险等级 | 文件类型 | 处理方式 |
-|---------|---------|---------|
-| 🔴 高风险 | 核心逻辑、配置、脚本 | 必须深度评估+用户确认 |
-| 🟡 中风险 | 工具类、辅助文件 | 搜索引用+用户确认 |
-| 🟢 低风险 | 临时文件、日志 | 确认无引用+用户确认 |
+| Risk Level | File Type | Handling |
+|-----------|-----------|----------|
+| 🔴 High | Core logic, configs, scripts | Must deep assess + user confirm |
+| 🟡 Medium | Utilities, auxiliary files | Search references + user confirm |
+| 🟢 Low | Temp files, logs | Confirm no references + user confirm |
 
-**核心口诀：看不懂不删，有引用不删，不确定不删，未经允许不删。**
+**Core Mantra: Don't delete if don't understand, don't delete if referenced, don't delete if uncertain, don't delete without permission.**
