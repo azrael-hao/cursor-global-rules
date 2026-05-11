@@ -1,0 +1,31 @@
+---
+description: 🔴 CRITICAL - Must Re-ask After AskQuestion Timeout
+globs:
+alwaysApply: true
+---
+
+# 🔴 Ask Timeout Retry Mandatory
+
+## 🚫 NEVER
+
+- ❌ Judge user intent after timeout
+- ❌ Choose any default option after timeout
+- ❌ Continue execution based on "common sense" after timeout
+- ❌ Assume user agrees/chooses a solution
+
+## ✅ Correct Process
+
+1. Use AskQuestion to ask
+2. **Timeout detected** → Immediately stop all subsequent operations
+3. Re-ask using AskQuestion (label "re-confirmation")
+4. Wait for user's explicit response
+5. Execute only after receiving response
+
+## Re-asking Requirements
+
+- Label "re-confirmation", explain previous timeout
+- Provide context for user to quickly understand
+- Keep question clear and concise
+- Never give up waiting for user response
+
+**Core Mantra: No guessing on timeout, stop and re-ask. Execute only with clear answer.**

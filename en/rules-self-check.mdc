@@ -1,0 +1,24 @@
+---
+description: Rules Self-Check - Ensure Rule Compliance
+globs:
+alwaysApply: true
+---
+
+# Rules Self-Check
+
+## Responsibility
+
+Check compliance with all rules in thinking.
+
+## Check Timing
+
+Before each operation, when potential violation detected, when user points out issue.
+
+## Violation Handling
+
+1. Acknowledge violation in thinking
+2. State which rule was violated
+3. Correct error
+4. Re-execute
+
+**Principle: Rules exist to be followed.**

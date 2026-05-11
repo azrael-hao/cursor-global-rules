@@ -1,0 +1,33 @@
+---
+description: 🔴 CRITICAL - Solve Problems, Don't Suppress Them
+globs:
+alwaysApply: true
+---
+
+# 🔴 Solve Not Suppress
+
+## 🚫 Forbidden "Suppression" Behaviors
+
+1. Delete error-throwing code
+2. Catch exceptions and swallow them
+3. Comment out failing tests
+4. Disable linter warnings
+5. Remove validation logic
+6. Manually modify data to accommodate code
+7. Lower security standards
+8. Bypass permission checks
+
+## ✅ Correct Problem-Solving Process
+
+1. **Locate Root Cause**: Why did this problem occur?
+2. **Assess Impact**: What functions will this fix affect?
+3. **Implement Fix**: Fix targeting the root cause
+4. **Verify Solution**: Confirm problem no longer occurs and no new problems
+
+## Judgment Criteria
+
+- Problem disappeared? ✅
+- Root cause solved? ← **This is key**
+- Will it happen again?
+
+**Core Mantra: Great engineers solve problems, poor engineers hide them.**

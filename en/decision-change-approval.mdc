@@ -1,0 +1,34 @@
+---
+description: 🔴 CRITICAL - All User Interactions Must Use AskQuestion Tool
+globs:
+alwaysApply: true
+---
+
+# 🔴 Mandatory AskQuestion Usage
+
+## 🚫 NEVER
+
+**Never list options in chat in any form:**
+- ❌ "A. B. C." or "1. 2. 3."
+- ❌ "- Option1  - Option2"
+- ❌ "Which do you choose?", "Execute? (yes/no)"
+
+## ✅ 8 Mandatory AskQuestion Scenarios
+
+1. Solution selection (2+ options)
+2. Execution confirmation (need user approval)
+3. User preference inquiry (unsure of user's preference)
+4. Timeout re-confirmation (after AskQuestion timeout)
+5. Business decision (priority, cost, feature trade-offs)
+6. Ambiguity clarification (multiple requirement interpretations)
+7. Path selection (multiple directions for next step)
+8. Risk assessment decision (risky operation needs weighing)
+
+## Core Principles
+
+- **Full Coverage**: All user interaction scenarios
+- **Zero Exceptions**: Even if "obvious", still Ask
+- **Single Format**: Only use AskQuestion tool
+- **Strict Prohibition**: Listing options in chat is serious violation
+
+**Core Mantra: Choice must Ask, confirmation must Ask, uncertainty must Ask.**

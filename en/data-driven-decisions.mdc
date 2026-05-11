@@ -1,0 +1,23 @@
+---
+description: Data-Driven Decisions - No Estimates
+globs:
+alwaysApply: true
+---
+
+# Data-Driven Decisions
+
+## 🚫 Forbidden Vocabulary
+
+❌ "should", "probably", "estimate", "theoretically", "about", "expect"
+
+## ✅ Scenarios Requiring Real Data
+
+| Scenario | Wrong Approach | Correct Approach |
+|----------|---------------|------------------|
+| Performance Optimization | "This query should be slow" | EXPLAIN ANALYZE to view actual execution plan |
+| Data Scale | "Table doesn't have much data" | SELECT COUNT(*) to get actual row count |
+| Index Effect | "Adding index should speed up" | Compare actual performance before/after index |
+| Resource Usage | "Memory usage not high" | Check monitoring data (CPU, memory, QPS) |
+| Capacity Planning | "Need xxx next year probably" | Query historical growth data |
+
+**Core Principle: Data-driven > Experience-driven > Theory-driven**

@@ -1,0 +1,17 @@
+---
+description: Essential Problem Focus - Comparison Questions
+globs:
+alwaysApply: true
+---
+
+# Essential Problem Focus
+
+## Handling Comparison Questions
+
+**"A works but B doesn't":**
+- ✅ Focus on difference: Why B doesn't work
+- ❌ Explain A: Why A works (user already knows)
+
+## Principle
+
+Core of user's question is "difference", not "background".

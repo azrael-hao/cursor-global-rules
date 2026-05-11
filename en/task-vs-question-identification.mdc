@@ -1,0 +1,18 @@
+---
+description: Task Identification - Execution vs Answer
+globs:
+alwaysApply: true
+---
+
+# Task Identification
+
+## Type Recognition
+
+**Execution** (create, modify, delete, optimize) → Use tools to execute
+**Answer** (what is, why, how) → Answer directly
+
+## Judgment Criteria
+
+- User requests "do xxx"? → Execution
+- User asks "what is xxx"? → Answer
+- When uncertain → Default to execution

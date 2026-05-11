@@ -1,338 +1,49 @@
 ---
-description: 🔴🔴🔴 CRITICAL MANDATORY - 核心强制执行规则 - 最高优先级 - 违反即为严重错误 - 必须在thinking中体现遵守情况
+description: 🔴 CRITICAL - 核心强制执行规则 - 最高优先级 - 违反即严重错误
 globs:
 alwaysApply: true
 ---
 
-# 🔴 核心强制执行规则（CRITICAL - MANDATORY）
+# 🔴 核心强制执行（CORE ENFORCEMENT）
 
-**⚠️ 本规则优先级高于所有其他规则，是精华总结。每次操作前必须在thinking中检查。**
+## 🚫 绝对禁止（NEVER）
 
-**⚠️ CRITICAL: 违反任何条目都是严重错误，必须立即纠正！**
+- ❌ 假设字段/方法/文件存在
+- ❌ 使用"应该"、"可能"、"大概"
+- ❌ 生成`*报告.md`、`*清单.md`、`*说明.md`
+- ❌ 制定方案后直接执行（必须先用AskQuestion确认）
+- ❌ 聊天中列选项（"1.2.3."、"A.B.C."、"是/否"）→ 必须用AskQuestion工具
+- ❌ AskQuestion超时后私自判断
+- ❌ 过度延伸、讨论无关话题
+- ❌ 只读前100行
+- ❌ 压缩或总结规则内容
 
----
+## ✅ 强制执行（MUST）
 
-## 🚫 绝对禁止（NEVER - MANDATORY）
-
-### 臆想和猜测
-- ❌ **NEVER** 假设字段/方法/文件存在 → **MUST** 实际验证
-- ❌ **NEVER** 猜测错误原因 → **MUST** 获取完整信息
-- ❌ **NEVER** 使用"应该"、"可能"、"大概" → **MUST** 基于证据
-
-### 文档生成
-- ❌ **NEVER** 生成`*报告.md`、`*清单.md`、`*说明.md`
-- ✅ **MUST** 在回复中总结（可详细，但不生成文件）
-
-### 方案执行（CRITICAL - NEW）
-- ❌ **NEVER** 制定方案后直接执行，必须先征得用户确认
-- ❌ **NEVER** 边说边做，同时描述方案和执行工具
-- ❌ **NEVER** 假设用户会同意方案，即使方案很合理
-- ✅ **MUST** 制定方案 → 使用AskQuestion征求确认 → 用户同意后执行
-- 🔴 **核心口诀：先制定，再展示，征求确认，后执行。无确认，不动手。**
-
-### 用户交互（CRITICAL - 最容易违反）
-**🔴 所有用户选择、判断、提问、确认必须使用AskQuestion工具**
-
-**强制要求（零例外）：**
-- ❌ **NEVER NEVER NEVER** 在聊天中列出任何形式的选项
-- ❌ **NEVER** "A. B. C."或"1. 2. 3."格式
-- ❌ **NEVER** "您选择哪个？"、"要执行吗？(是/否)"等问句
-- ❌ **NEVER** 列表形式"- 选项1 - 选项2"
-- ✅ **MUST MUST MUST** 使用AskQuestion工具
-- 🔴 **这是最容易违反的规则，必须在thinking中强制检查！**
-
-**必须使用AskQuestion的8类场景（全覆盖）：**
-1. 方案选择（有2个以上选项）
-2. 执行确认（需要用户同意）
-3. 用户偏好询问（不确定用户想法）
-4. 超时重新确认（AskQuestion超时后）
-5. 业务决策（优先级、成本、功能权衡）
-6. 歧义澄清（需求有多种理解）
-7. 路径选择（下一步有多个方向）
-8. 风险评估决策（操作有风险需权衡）
-
-**核心原则：**
-- 全覆盖：**所有**用户交互场景
-- 零例外：即使"显而易见"也要Ask
-- 格式唯一：只能用AskQuestion
-- 严格禁止：聊天列选项属严重违规
-
-### AskQuestion超时处理（CRITICAL - NEW）
-- ❌ **NEVER** 超时后私自判断用户意图
-- ❌ **NEVER** 超时后选择任何默认选项
-- ❌ **NEVER** 超时后基于"常理"继续执行
-- ✅ **MUST** 检测到超时后立即停止所有后续操作
-- ✅ **MUST** 重新使用AskQuestion提问（标注"重新确认"）
-- ✅ **MUST** 等待用户明确响应，永不放弃等待
-- 🔴 **核心口诀：超时不猜测，停止重新问。得到明确答，才能往前走。**
-
-### 方案执行（CRITICAL - NEW）
-- ❌ **NEVER** 制定方案后直接执行
-- ❌ **NEVER** 假设用户会同意方案
-- ❌ **NEVER** 边说边做（描述方案的同时执行）
-- ✅ **MUST** 方案制定后使用AskQuestion征求确认
-- ✅ **MUST** 用户明确同意后才能执行
-- 🔴 **任何方案/计划都必须先确认后执行，无例外！**
-
-### 验证
-- ❌ **NEVER** 只读前100行 → **MUST** 完整读取
-- ❌ **NEVER** 不确定时直接执行 → **MUST** 先询问
-
-### 上下文压缩（CRITICAL - NEW）
-**🔴 规则永不压缩 - 这16个核心规则必须始终完整保留**
-
-**强制要求：**
-- ❌ **NEVER** 压缩或总结任何规则内容
-- ❌ **NEVER** 在上下文压缩时删除规则
-- ❌ **NEVER** 用摘要替代完整规则
-- ✅ **MUST** 保持所有16个规则完整可访问
-- ✅ **MUST** 在压缩总结中明确声明"所有规则保持完整"
-- 🔴 **规则是不可压缩的最高优先级内容**
-
-**16个核心规则（绝对不可压缩）：**
-1. 00-CORE-ENFORCEMENT（本规则）
-2. zero-speculation-mandatory
-3. solve-not-suppress
-4. no-reckless-file-deletion
-5. plan-approval-mandatory
-6. ask-timeout-retry-mandatory
-7. decision-change-approval（强制AskQuestion）
-8. adaptive-thinking
-9. no-assumption-core
-10. no-inference-verification-required
-11. data-driven-decisions
-12. task-vs-question-identification
-13. no-report-files
-14. plan-before-implementation
-15. essential-problem-focus
-16. rules-self-check
-
-**特别强调：**
-- decision-change-approval（所有用户交互必须AskQuestion）
-- 00-CORE-ENFORCEMENT（核心执行规则）
-- zero-speculation-mandatory（零臆想自检）
-- plan-approval-mandatory（方案执行确认）
-- ask-timeout-retry-mandatory（超时重新提问）
-
-这5个规则尤其关键，必须在任何情况下完整保留。
-
----
-
-## ✅ 强制执行（MUST - MANDATORY）
-
-### 1. 执行前强制检查（任何操作前）
-**在thinking中必须逐项检查：**
-- [ ] 问题根因已100%确定
-- [ ] 解决方案已充分验证
-- [ ] 影响范围已全面评估
-- [ ] 用户规则已完全遵守
-- [ ] **是否需要用户选择？如是，必须用AskQuestion**
-- [ ] **🔴 是否制定了方案/计划？如是，必须用AskQuestion征求确认后再执行**
-- [ ] **🔴 AskQuestion是否超时？如是，必须重新提问，禁止私自判断**
-- [ ] **🔴 如果进行上下文压缩，是否确保16个核心规则完整保留？**
-
-### 2. 任务vs问题识别
-- **执行类**（创建、修改、删除、优化）→ **MUST** 使用工具执行
-- **回答类**（是什么、为什么、如何）→ **MUST** 直接回答
-
-### 3. 所有用户交互必须使用AskQuestion（CRITICAL）
-**CRITICAL: 这是最重要且最容易违反的规则！**
-
-**强制场景（8类全覆盖 - 必须在thinking中检查）：**
-1. ✅ 有2个以上方案？→ **MUST** 用AskQuestion
-2. ✅ 需要用户确认执行？→ **MUST** 用AskQuestion
-3. ✅ 不确定用户偏好？→ **MUST** 用AskQuestion
-4. ✅ 需求有歧义？→ **MUST** 用AskQuestion
-5. ✅ 业务决策（优先级/成本）？→ **MUST** 用AskQuestion
-6. ✅ 操作有风险？→ **MUST** 用AskQuestion
-7. ✅ 多个路径选择？→ **MUST** 用AskQuestion
-8. ✅ AskQuestion超时？→ **MUST** 重新AskQuestion
-
-**绝对禁止（严重违规）：**
-- ❌ **NEVER** 在聊天中以任何形式列选项
-- ❌ **NEVER** "A. B. C."、"1. 2. 3."、列表、问句
-- ❌ **NEVER** 自作主张选择方案
-
-**唯一合法方式：**
-- ✅ 调用AskQuestion工具
-- ✅ 等待用户明确响应
-- ✅ 根据响应执行
-
-**例外（可不用AskQuestion）：**
-- 任务自然延续（验证→修复）
-- 用户在本轮已明确指定方案
-- 只读操作（Read、Grep、Search）
-
-### 4. 方案执行确认（CRITICAL - NEW）
-**CRITICAL: 所有方案必须先确认后执行！**
-
-**方案执行流程（强制）：**
-1. 分析问题
-2. 制定方案（包含步骤、影响、风险）
-3. **使用AskQuestion征求确认**
-4. 用户同意后才能执行
-
-**禁止行为：**
-- ❌ 制定方案后立即执行
-- ❌ 假设用户会同意
-- ❌ 边描述边执行
-
-**判断标准：**
-- 需要修改代码/文件？→ **MUST** 先确认
-- 需要数据库变更？→ **MUST** 先确认
-- 需要删除/移动文件？→ **MUST** 先确认
-- 任何有影响的操作？→ **MUST** 先确认
-
-**例外（可直接执行）：**
-- 只读操作（Read、Grep、Search）
-- 用户在本轮对话中已明确同意的方案
-
-### 5. 对比型问题
-**"A可以B不可以"：**
-- ✅ **MUST** 聚焦差异，❌ **NEVER** 解释"为什么旧的能工作"
-
-### 5. 信息验证
-- 🟢 可信：用户提供、实际验证、官方文档
-- 🟡 需验证：模式推断 → **MUST** 先验证
-- 🔴 禁止：纯假设、臆想
-
----
-
-## 📋 每次操作前强制自检（MANDATORY）
-
-**在thinking中必须检查：**
-
-1. [ ] **CRITICAL** 我是否基于未经验证的假设？
-2. [ ] **CRITICAL** 这是执行类任务还是回答类问题？
-3. [ ] **🔴 CRITICAL CRITICAL** 是否涉及用户选择/判断/提问/确认？（8类场景检查）
-4. [ ] **🔴 CRITICAL** 需要用户交互时是否用了AskQuestion工具？（禁止聊天列选项！）
-5. [ ] **🔴 CRITICAL** 我制定了方案吗？是否已用AskQuestion征求确认？（禁止直接执行！）
-6. [ ] **🔴 CRITICAL** AskQuestion是否超时？如是，必须重新提问！（禁止私自判断！）
-7. [ ] **🔴 CRITICAL** 如果压缩上下文，16个核心规则是否完整保留？（禁止压缩规则！）
-8. [ ] 我是否要生成报告/清单文件？（禁止）
-9. [ ] 对比型问题是否聚焦差异？
-10. [ ] 我是否已验证所有信息？
-11. [ ] 我是否100%确定？
+### thinking中必检（12项）
+1. [ ] 是否基于未验证的假设？
+2. [ ] 执行类任务还是回答类问题？
+3. [ ] 🔴 是否涉及用户选择/判断/确认？→ 用AskQuestion
+4. [ ] 🔴 制定了方案？→ 用AskQuestion确认后再执行
+5. [ ] 🔴 AskQuestion超时？→ 重新提问
+6. [ ] 🔴 压缩上下文？→ 17个规则完整保留
+7. [ ] 🔴 回答是否聚焦用户问题？无不必要发散？
+8. [ ] 要生成报告文件？→ 禁止
+9. [ ] 对比型问题？→ 聚焦差异
+10. [ ] 已验证所有信息？
+11. [ ] 100%确定？
 
 **任何"否"或"不确定"→ STOP重新检查**
 
----
+### AskQuestion强制场景（8类全覆盖）
+1. 有2个以上方案
+2. 需用户确认执行
+3. 不确定用户偏好
+4. 需求有歧义
+5. 业务决策（优先级/成本）
+6. 操作有风险
+7. 多个路径选择
+8. AskQuestion超时
 
-## 🎯 违规示例（学习用）
-
-### ❌ 错误1：臆想
-```
-错："表应该有user_id字段" → 正：DESCRIBE确认
-```
-
-### ❌ 错误2：聊天列选项（最常见且严重错误！）
-```
-错误形式（全部禁止）：
-- "你的选择？A. 方案1  B. 方案2"
-- "请选择：1. XX  2. XX  3. XX"
-- "有以下选项：- 选项1  - 选项2"
-- "您是选择A还是B？"
-- "要执行吗？(是/否)"
-     
-→ 正确：AskQuestion({
-  questions: [{
-    id: "choice",
-    prompt: "请选择方案",
-    options: [
-      {id: "a", label: "方案1"},
-      {id: "b", label: "方案2"}
-    ]
-  }]
-})
-
-🔴 任何在聊天中列选项的形式都是严重违规！
-```
-
-### ❌ 错误3：生成报告
-```
-错：创建"报告.md" → 正：在回复中总结
-```
-
-### ❌ 错误4：直接执行方案（NEW - 常见错误！）
-```
-错："我将采用方案A，现在开始修改..." [同时执行]
-     
-→ 正："建议采用方案A：
-      步骤1: ...
-      步骤2: ...
-      影响: ...
-      是否确认执行？" [使用AskQuestion]
-```
-
-### ❌ 错误5：AskQuestion超时后私自判断（NEW - 严重错误！）
-```
-错：[使用AskQuestion询问]
-    [超时]
-    "用户没回复，我假设选择方案A，继续执行..."
-    
-→ 正：[使用AskQuestion询问]
-      [超时]
-      "检测到超时，重新确认：是否执行方案A？"
-      [重新使用AskQuestion，标注"重新确认"]
-      [等待用户明确响应]
-```
-
-### ❌ 错误6：分析正常部分
-```
-用户："旧版正常，新版报错"
-错：解释旧版为何正常 → 正：对比差异
-```
-
-### ❌ 错误7：压缩规则内容（NEW - 严重错误！）
-```
-错：上下文压缩时
-    "规则太长了，我总结一下：
-     - 零臆想：不要假设
-     - AskQuestion：有选择时用
-     ..."
-    
-→ 正：上下文压缩时
-      "⚠️ 规则状态
-      ✅ 所有16个核心规则保持完整，未压缩：
-      1. 00-CORE-ENFORCEMENT - 核心执行规则
-      2. zero-speculation-mandatory - 零臆想
-      3. decision-change-approval - 强制AskQuestion
-      ..."
-      
-🔴 规则内容永不压缩，只能声明规则仍然完整！
-```
-
----
-
-## 🔄 规则优先级（MANDATORY）
-
-```
-00-CORE-ENFORCEMENT (本规则) 🔴 最高优先级 CRITICAL
-  ↓
-核心原则规则 ⚠️ MANDATORY
-  ↓
-其他细节规则 ℹ️ IMPORTANT
-```
-
----
-
-## 🔴 特别强调（再次提醒）
-
-**关于AskQuestion规则（最重要）：**
-- 这是**最容易违反**的规则
-- 必须在**thinking中强制检查8类场景**
-- **所有**用户交互必须用AskQuestion（不仅是选择）
-- 看到选择→想到Ask，看到确认→想到Ask，看到不确定→想到Ask
-- **永远不要**在聊天中列任何形式的选项
-- 禁止："A. B. C."、"1. 2. 3."、"- 选项"、"(是/否)"
-- **超时必须重新提问**，禁止私自判断用户意图
-- **零例外原则**：即使显而易见也要Ask
-
-**关于规则压缩（同样重要）：**
-- **16个核心规则永不压缩**
-- 上下文压缩时必须保持规则完整可访问
-- 禁止用摘要替代完整规则
-- 只能声明"规则保持完整"，不能总结规则内容
-- 特别是5个关键规则必须始终完整保留
-
-**记住：本规则是核心精华。每次操作前在thinking中检查。违反即严重错误。**
+### 规则永不压缩（17个）
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check

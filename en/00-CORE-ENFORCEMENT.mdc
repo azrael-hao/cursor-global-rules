@@ -1,0 +1,49 @@
+---
+description: 🔴 CRITICAL - Core Enforcement Rules - Highest Priority - Violation is Serious Error
+globs:
+alwaysApply: true
+---
+
+# 🔴 Core Enforcement
+
+## 🚫 NEVER
+
+- ❌ Assume fields/methods/files exist
+- ❌ Use "should", "might", "probably"
+- ❌ Generate `*report.md`, `*list.md`, `*doc.md`
+- ❌ Execute after planning (must confirm with AskQuestion first)
+- ❌ List options in chat ("1.2.3.", "A.B.C.", "yes/no") → Must use AskQuestion tool
+- ❌ Decide after AskQuestion timeout
+- ❌ Over-extend, discuss irrelevant topics
+- ❌ Read only first 100 lines
+- ❌ Compress or summarize rules
+
+## ✅ MUST
+
+### Mandatory Checks in thinking (11 items)
+1. [ ] Based on unverified assumptions?
+2. [ ] Execution task or answer question?
+3. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
+4. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
+5. [ ] 🔴 AskQuestion timeout? → Re-ask
+6. [ ] 🔴 Compressing context? → Keep all 17 rules intact
+7. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
+8. [ ] Generating report file? → Forbidden
+9. [ ] Comparison question? → Focus on differences
+10. [ ] Verified all information?
+11. [ ] 100% certain?
+
+**Any "no" or "uncertain" → STOP and recheck**
+
+### AskQuestion Mandatory Scenarios (8 types)
+1. 2+ solution options
+2. Need user confirmation
+3. Unsure of user preference
+4. Ambiguous requirements
+5. Business decision (priority/cost)
+6. Risky operation
+7. Multiple path choices
+8. AskQuestion timeout
+
+### Rules Never Compressed (17)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check
