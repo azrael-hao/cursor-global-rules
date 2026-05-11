@@ -8,29 +8,30 @@
 
 **全局Rules**: `~/.cursor/rules/` (Windows: `%USERPROFILE%\.cursor\rules\`)
 
-## 📋 当前生效的Rules（14个）
+## 📋 当前生效的Rules（15个）
 
 所有规则配置了`alwaysApply: true`，自动在所有对话中生效。
 
 ### 🔴 最高优先级（2个）
-1. **00-CORE-ENFORCEMENT.mdc** (74行) - 核心强制执行规则，所有操作必须遵守
+1. **00-CORE-ENFORCEMENT.mdc** (89行) - 核心强制执行规则，所有操作必须遵守
 2. **zero-speculation-mandatory.mdc** (348行) - 🔴 零臆想强制执行，thinking必须自检
 
-### ⚠️ 核心原则（10个）
+### ⚠️ 核心原则（11个）
 3. **adaptive-thinking.mdc** (79行) - 自适应思考深度控制，复杂任务至少思考2次
 4. **no-assumption-core.mdc** (69行) - 零臆想原则，禁止假设和猜测
 5. **no-inference-verification-required.mdc** (92行) - 禁止推断，必须验证
 6. **data-driven-decisions.mdc** (218行) - 数据驱动决策，禁止使用预估值
 7. **solve-not-suppress.mdc** (287行) - 🔴 解决问题而非干掉问题
-8. **no-reckless-file-deletion.mdc** (380行) - 🔴 禁止粗暴删除文件（NEW）
-9. **task-vs-question-identification.mdc** (76行) - 任务与问题识别
-10. **decision-change-approval.mdc** (83行) - 决策变更审批规则
-11. **no-report-files.mdc** (85行) - 禁止生成报告文档
-12. **plan-before-implementation.mdc** (126行) - 计划优先原则，复杂任务必须先规划
+8. **no-reckless-file-deletion.mdc** (380行) - 🔴 禁止粗暴删除文件
+9. **plan-approval-mandatory.mdc** (447行) - 🔴 方案执行前强制确认（NEW）
+10. **task-vs-question-identification.mdc** (76行) - 任务与问题识别
+11. **decision-change-approval.mdc** (83行) - 决策变更审批规则
+12. **no-report-files.mdc** (85行) - 禁止生成报告文档
+13. **plan-before-implementation.mdc** (126行) - 计划优先原则，复杂任务必须先规划
 
 ### ℹ️ 工作流程（2个）
-13. **essential-problem-focus.mdc** (85行) - 本质问题聚焦（对比型问题）
-14. **rules-self-check.mdc** (145行) - Rules自我监督机制
+14. **essential-problem-focus.mdc** (85行) - 本质问题聚焦（对比型问题）
+15. **rules-self-check.mdc** (145行) - Rules自我监督机制
 
 ## 🎯 Rules vs Skills 区分
 
@@ -83,6 +84,7 @@ alwaysApply: true
 - **第五轮增强**: 11个 → 12个规则文件（新增zero-speculation-mandatory）
 - **第六轮增强**: 12个 → 13个规则文件（新增solve-not-suppress）
 - **第七轮增强**: 13个 → 14个规则文件（新增no-reckless-file-deletion）
+- **第八轮增强**: 14个 → 15个规则文件（新增plan-approval-mandatory）
 - **优化原则**: 
   - 删除了工具性内容（转为Skills）
   - 删除了测试文件和重复摘要
@@ -92,6 +94,7 @@ alwaysApply: true
   - 新增了thinking强制自检规则
   - 新增了解决问题方法论规则
   - 新增了文件删除安全规则
+  - 新增了方案执行前强制确认规则
   - 每个原则只保留一个版本
 
 ## 🌐 GitHub备份
@@ -111,7 +114,7 @@ alwaysApply: true
 ## 📝 行数统计
 
 ```
-00-CORE-ENFORCEMENT.mdc                 74 lines ✅
+00-CORE-ENFORCEMENT.mdc                 89 lines ✅
 adaptive-thinking.mdc                   79 lines ✅
 data-driven-decisions.mdc              218 lines ⚠️⚠️
 decision-change-approval.mdc            83 lines ✅
@@ -120,22 +123,23 @@ no-assumption-core.mdc                  69 lines ✅
 no-inference-verification-required.mdc  92 lines ✅
 no-reckless-file-deletion.mdc          380 lines 🔴
 no-report-files.mdc                     85 lines ✅
+plan-approval-mandatory.mdc            447 lines 🔴
 plan-before-implementation.mdc         126 lines ⚠️
 rules-self-check.mdc                   145 lines ⚠️
 solve-not-suppress.mdc                 287 lines ⚠️⚠️
 task-vs-question-identification.mdc     76 lines ✅
 zero-speculation-mandatory.mdc         348 lines 🔴
 
-总计: 14个文件，2147行
-平均: 153.4行/文件
+总计: 15个文件，2609行
+平均: 173.9行/文件
 ```
 
 **说明**: 
 - ✅ 80-100行：最优范围
 - ⚠️ 100-150行：可接受范围（复杂规则）
 - ⚠️⚠️ 150-300行：特殊规则（包含大量示例和模板）
-- 🔴 300+行：CRITICAL级规则（强制自检+详细流程+验证模板+场景分类）
+- 🔴 300+行：CRITICAL级规则（强制自检+详细流程+验证模板+场景分类+多示例）
 
 ---
 
-**最后更新**: 2026年5月9日
+**最后更新**: 2026年5月11日
