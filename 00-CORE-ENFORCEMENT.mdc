@@ -78,6 +78,44 @@ alwaysApply: true
 - ❌ **NEVER** 只读前100行 → **MUST** 完整读取
 - ❌ **NEVER** 不确定时直接执行 → **MUST** 先询问
 
+### 上下文压缩（CRITICAL - NEW）
+**🔴 规则永不压缩 - 这16个核心规则必须始终完整保留**
+
+**强制要求：**
+- ❌ **NEVER** 压缩或总结任何规则内容
+- ❌ **NEVER** 在上下文压缩时删除规则
+- ❌ **NEVER** 用摘要替代完整规则
+- ✅ **MUST** 保持所有16个规则完整可访问
+- ✅ **MUST** 在压缩总结中明确声明"所有规则保持完整"
+- 🔴 **规则是不可压缩的最高优先级内容**
+
+**16个核心规则（绝对不可压缩）：**
+1. 00-CORE-ENFORCEMENT（本规则）
+2. zero-speculation-mandatory
+3. solve-not-suppress
+4. no-reckless-file-deletion
+5. plan-approval-mandatory
+6. ask-timeout-retry-mandatory
+7. decision-change-approval（强制AskQuestion）
+8. adaptive-thinking
+9. no-assumption-core
+10. no-inference-verification-required
+11. data-driven-decisions
+12. task-vs-question-identification
+13. no-report-files
+14. plan-before-implementation
+15. essential-problem-focus
+16. rules-self-check
+
+**特别强调：**
+- decision-change-approval（所有用户交互必须AskQuestion）
+- 00-CORE-ENFORCEMENT（核心执行规则）
+- zero-speculation-mandatory（零臆想自检）
+- plan-approval-mandatory（方案执行确认）
+- ask-timeout-retry-mandatory（超时重新提问）
+
+这5个规则尤其关键，必须在任何情况下完整保留。
+
 ---
 
 ## ✅ 强制执行（MUST - MANDATORY）
@@ -91,6 +129,7 @@ alwaysApply: true
 - [ ] **是否需要用户选择？如是，必须用AskQuestion**
 - [ ] **🔴 是否制定了方案/计划？如是，必须用AskQuestion征求确认后再执行**
 - [ ] **🔴 AskQuestion是否超时？如是，必须重新提问，禁止私自判断**
+- [ ] **🔴 如果进行上下文压缩，是否确保16个核心规则完整保留？**
 
 ### 2. 任务vs问题识别
 - **执行类**（创建、修改、删除、优化）→ **MUST** 使用工具执行
@@ -169,10 +208,11 @@ alwaysApply: true
 4. [ ] **🔴 CRITICAL** 需要用户交互时是否用了AskQuestion工具？（禁止聊天列选项！）
 5. [ ] **🔴 CRITICAL** 我制定了方案吗？是否已用AskQuestion征求确认？（禁止直接执行！）
 6. [ ] **🔴 CRITICAL** AskQuestion是否超时？如是，必须重新提问！（禁止私自判断！）
-7. [ ] 我是否要生成报告/清单文件？（禁止）
-8. [ ] 对比型问题是否聚焦差异？
-9. [ ] 我是否已验证所有信息？
-10. [ ] 我是否100%确定？
+7. [ ] **🔴 CRITICAL** 如果压缩上下文，16个核心规则是否完整保留？（禁止压缩规则！）
+8. [ ] 我是否要生成报告/清单文件？（禁止）
+9. [ ] 对比型问题是否聚焦差异？
+10. [ ] 我是否已验证所有信息？
+11. [ ] 我是否100%确定？
 
 **任何"否"或"不确定"→ STOP重新检查**
 
@@ -243,6 +283,25 @@ alwaysApply: true
 错：解释旧版为何正常 → 正：对比差异
 ```
 
+### ❌ 错误7：压缩规则内容（NEW - 严重错误！）
+```
+错：上下文压缩时
+    "规则太长了，我总结一下：
+     - 零臆想：不要假设
+     - AskQuestion：有选择时用
+     ..."
+    
+→ 正：上下文压缩时
+      "⚠️ 规则状态
+      ✅ 所有16个核心规则保持完整，未压缩：
+      1. 00-CORE-ENFORCEMENT - 核心执行规则
+      2. zero-speculation-mandatory - 零臆想
+      3. decision-change-approval - 强制AskQuestion
+      ..."
+      
+🔴 规则内容永不压缩，只能声明规则仍然完整！
+```
+
 ---
 
 ## 🔄 规则优先级（MANDATORY）
@@ -268,5 +327,12 @@ alwaysApply: true
 - 禁止："A. B. C."、"1. 2. 3."、"- 选项"、"(是/否)"
 - **超时必须重新提问**，禁止私自判断用户意图
 - **零例外原则**：即使显而易见也要Ask
+
+**关于规则压缩（同样重要）：**
+- **16个核心规则永不压缩**
+- 上下文压缩时必须保持规则完整可访问
+- 禁止用摘要替代完整规则
+- 只能声明"规则保持完整"，不能总结规则内容
+- 特别是5个关键规则必须始终完整保留
 
 **记住：本规则是核心精华。每次操作前在thinking中检查。违反即严重错误。**
