@@ -30,11 +30,32 @@ alwaysApply: true
 - ✅ **MUST** 制定方案 → 使用AskQuestion征求确认 → 用户同意后执行
 - 🔴 **核心口诀：先制定，再展示，征求确认，后执行。无确认，不动手。**
 
-### 选项展示（CRITICAL）
-- ❌ **NEVER NEVER NEVER** 在聊天中列"A、B、C、D"选项
-- ❌ **NEVER** 使用"你想选择哪个？1. XX 2. XX"格式
-- ✅ **MUST MUST MUST** 使用AskQuestion工具（需要用户选择时）
+### 用户交互（CRITICAL - 最容易违反）
+**🔴 所有用户选择、判断、提问、确认必须使用AskQuestion工具**
+
+**强制要求（零例外）：**
+- ❌ **NEVER NEVER NEVER** 在聊天中列出任何形式的选项
+- ❌ **NEVER** "A. B. C."或"1. 2. 3."格式
+- ❌ **NEVER** "您选择哪个？"、"要执行吗？(是/否)"等问句
+- ❌ **NEVER** 列表形式"- 选项1 - 选项2"
+- ✅ **MUST MUST MUST** 使用AskQuestion工具
 - 🔴 **这是最容易违反的规则，必须在thinking中强制检查！**
+
+**必须使用AskQuestion的8类场景（全覆盖）：**
+1. 方案选择（有2个以上选项）
+2. 执行确认（需要用户同意）
+3. 用户偏好询问（不确定用户想法）
+4. 超时重新确认（AskQuestion超时后）
+5. 业务决策（优先级、成本、功能权衡）
+6. 歧义澄清（需求有多种理解）
+7. 路径选择（下一步有多个方向）
+8. 风险评估决策（操作有风险需权衡）
+
+**核心原则：**
+- 全覆盖：**所有**用户交互场景
+- 零例外：即使"显而易见"也要Ask
+- 格式唯一：只能用AskQuestion
+- 严格禁止：聊天列选项属严重违规
 
 ### AskQuestion超时处理（CRITICAL - NEW）
 - ❌ **NEVER** 超时后私自判断用户意图
@@ -75,21 +96,33 @@ alwaysApply: true
 - **执行类**（创建、修改、删除、优化）→ **MUST** 使用工具执行
 - **回答类**（是什么、为什么、如何）→ **MUST** 直接回答
 
-### 3. 决策和选择（CRITICAL）
-**CRITICAL: 这是最重要的规则之一！**
+### 3. 所有用户交互必须使用AskQuestion（CRITICAL）
+**CRITICAL: 这是最重要且最容易违反的规则！**
 
-**需要用户选择时（必须在thinking中判断）：**
-- ✅ **MUST** 调用AskQuestion工具
-- ❌ **NEVER** 在聊天中列选项
+**强制场景（8类全覆盖 - 必须在thinking中检查）：**
+1. ✅ 有2个以上方案？→ **MUST** 用AskQuestion
+2. ✅ 需要用户确认执行？→ **MUST** 用AskQuestion
+3. ✅ 不确定用户偏好？→ **MUST** 用AskQuestion
+4. ✅ 需求有歧义？→ **MUST** 用AskQuestion
+5. ✅ 业务决策（优先级/成本）？→ **MUST** 用AskQuestion
+6. ✅ 操作有风险？→ **MUST** 用AskQuestion
+7. ✅ 多个路径选择？→ **MUST** 用AskQuestion
+8. ✅ AskQuestion超时？→ **MUST** 重新AskQuestion
 
-**判断标准（必须检查）：**
-- 有2个或以上方案？→ **MUST** 用AskQuestion
-- 需要用户决策？→ **MUST** 用AskQuestion
-- 不确定用户偏好？→ **MUST** 用AskQuestion
+**绝对禁止（严重违规）：**
+- ❌ **NEVER** 在聊天中以任何形式列选项
+- ❌ **NEVER** "A. B. C."、"1. 2. 3."、列表、问句
+- ❌ **NEVER** 自作主张选择方案
 
-**何时直接执行：**
-- 任务自然延续（验证→修复）→ **MUST** 直接执行
-- 用户明确指定方案 → **MUST** 直接执行
+**唯一合法方式：**
+- ✅ 调用AskQuestion工具
+- ✅ 等待用户明确响应
+- ✅ 根据响应执行
+
+**例外（可不用AskQuestion）：**
+- 任务自然延续（验证→修复）
+- 用户在本轮已明确指定方案
+- 只读操作（Read、Grep、Search）
 
 ### 4. 方案执行确认（CRITICAL - NEW）
 **CRITICAL: 所有方案必须先确认后执行！**
@@ -132,8 +165,8 @@ alwaysApply: true
 
 1. [ ] **CRITICAL** 我是否基于未经验证的假设？
 2. [ ] **CRITICAL** 这是执行类任务还是回答类问题？
-3. [ ] **CRITICAL CRITICAL** 是否有2个以上方案需要用户选择？
-4. [ ] **CRITICAL** 需要选择时是否用了AskQuestion工具？（禁止聊天列选项！）
+3. [ ] **🔴 CRITICAL CRITICAL** 是否涉及用户选择/判断/提问/确认？（8类场景检查）
+4. [ ] **🔴 CRITICAL** 需要用户交互时是否用了AskQuestion工具？（禁止聊天列选项！）
 5. [ ] **🔴 CRITICAL** 我制定了方案吗？是否已用AskQuestion征求确认？（禁止直接执行！）
 6. [ ] **🔴 CRITICAL** AskQuestion是否超时？如是，必须重新提问！（禁止私自判断！）
 7. [ ] 我是否要生成报告/清单文件？（禁止）
@@ -152,21 +185,27 @@ alwaysApply: true
 错："表应该有user_id字段" → 正：DESCRIBE确认
 ```
 
-### ❌ 错误2：聊天列选项（最常见错误！）
+### ❌ 错误2：聊天列选项（最常见且严重错误！）
 ```
-错："你的选择？
-     A. 方案1
-     B. 方案2" 
+错误形式（全部禁止）：
+- "你的选择？A. 方案1  B. 方案2"
+- "请选择：1. XX  2. XX  3. XX"
+- "有以下选项：- 选项1  - 选项2"
+- "您是选择A还是B？"
+- "要执行吗？(是/否)"
      
-→ 正：AskQuestion({
+→ 正确：AskQuestion({
   questions: [{
     id: "choice",
+    prompt: "请选择方案",
     options: [
       {id: "a", label: "方案1"},
       {id: "b", label: "方案2"}
     ]
   }]
 })
+
+🔴 任何在聊天中列选项的形式都是严重违规！
 ```
 
 ### ❌ 错误3：生成报告
@@ -220,11 +259,14 @@ alwaysApply: true
 
 ## 🔴 特别强调（再次提醒）
 
-**关于AskQuestion规则：**
+**关于AskQuestion规则（最重要）：**
 - 这是**最容易违反**的规则
-- 必须在**thinking中强制检查**
-- 看到多个方案→立即想到AskQuestion
-- **永远不要**在聊天中列"1. 2. 3."或"A. B. C."
+- 必须在**thinking中强制检查8类场景**
+- **所有**用户交互必须用AskQuestion（不仅是选择）
+- 看到选择→想到Ask，看到确认→想到Ask，看到不确定→想到Ask
+- **永远不要**在聊天中列任何形式的选项
+- 禁止："A. B. C."、"1. 2. 3."、"- 选项"、"(是/否)"
 - **超时必须重新提问**，禁止私自判断用户意图
+- **零例外原则**：即使显而易见也要Ask
 
 **记住：本规则是核心精华。每次操作前在thinking中检查。违反即严重错误。**
