@@ -17,6 +17,7 @@ alwaysApply: true
 - ❌ 过度延伸、讨论无关话题
 - ❌ 只读前100行
 - ❌ 压缩或总结规则内容
+- ❌ 留下半成品让用户说"继续"——必须一次对话完整解决
 
 ## ✅ 强制执行（MUST）
 
@@ -26,12 +27,13 @@ alwaysApply: true
 3. [ ] 🔴 是否涉及用户选择/判断/确认？→ 用AskQuestion
 4. [ ] 🔴 制定了方案？→ 用AskQuestion确认后再执行
 5. [ ] 🔴 AskQuestion超时？→ 重新提问
-6. [ ] 🔴 压缩上下文？→ 17个规则完整保留
+6. [ ] 🔴 压缩上下文？→ 18个规则完整保留
 7. [ ] 🔴 回答是否聚焦用户问题？无不必要发散？
-8. [ ] 要生成报告文件？→ 禁止
-9. [ ] 对比型问题？→ 聚焦差异
-10. [ ] 已验证所有信息？
-11. [ ] 100%确定？
+8. [ ] 🔴 任务是否在本轮完整解决？有无遗留半成品？
+9. [ ] 要生成报告文件？→ 禁止
+10. [ ] 对比型问题？→ 聚焦差异
+11. [ ] 已验证所有信息？
+12. [ ] 100%确定？
 
 **任何"否"或"不确定"→ STOP重新检查**
 
@@ -45,5 +47,5 @@ alwaysApply: true
 7. 多个路径选择
 8. AskQuestion超时
 
-### 规则永不压缩（17个）
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check
+### 规则永不压缩（18个）
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution

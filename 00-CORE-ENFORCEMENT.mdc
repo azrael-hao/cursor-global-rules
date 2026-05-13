@@ -17,21 +17,23 @@ alwaysApply: true
 - ❌ Over-extend, discuss irrelevant topics
 - ❌ Read only first 100 lines
 - ❌ Compress or summarize rules
+- ❌ Leave partial work requiring user to say "continue" — solve completely in one turn
 
 ## ✅ MUST
 
-### Mandatory Checks in thinking (11 items)
+### Mandatory Checks in thinking (12 items)
 1. [ ] Based on unverified assumptions?
 2. [ ] Execution task or answer question?
 3. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
 4. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
 5. [ ] 🔴 AskQuestion timeout? → Re-ask
-6. [ ] 🔴 Compressing context? → Keep all 17 rules intact
+6. [ ] 🔴 Compressing context? → Keep all 18 rules intact
 7. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
-8. [ ] Generating report file? → Forbidden
-9. [ ] Comparison question? → Focus on differences
-10. [ ] Verified all information?
-11. [ ] 100% certain?
+8. [ ] 🔴 Task fully resolved in this turn? No partial work left?
+9. [ ] Generating report file? → Forbidden
+10. [ ] Comparison question? → Focus on differences
+11. [ ] Verified all information?
+12. [ ] 100% certain?
 
 **Any "no" or "uncertain" → STOP and recheck**
 
@@ -45,5 +47,5 @@ alwaysApply: true
 7. Multiple path choices
 8. AskQuestion timeout
 
-### Rules Never Compressed (17)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check
+### Rules Never Compressed (18)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution

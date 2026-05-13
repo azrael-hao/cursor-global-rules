@@ -1,0 +1,39 @@
+---
+description: 🔴 CRITICAL - Solve Completely in One Turn - No Partial Work Across Multiple Turns
+globs:
+alwaysApply: true
+---
+
+# 🔴 Single-Turn Resolution
+
+## 🚫 NEVER
+
+1. Leave partial work requiring user to say "continue"
+2. Stop mid-task and ask the user to re-request remaining steps
+3. Gather context lazily across multiple turns when it can be done upfront
+4. Break a solvable task into artificial "phases" across turns
+5. Output a plan and wait, when the task is clear and can be executed now
+6. Ask clarifying questions that could be answered by reading the code
+
+## ✅ MUST
+
+1. **Gather all context upfront**: Read all relevant files, search references, understand the full picture before acting
+2. **Batch tool calls**: Run independent reads/searches in parallel, not one-by-one across turns
+3. **Execute to completion**: Implement the full solution — don't stop at "step 1 of 3"
+4. **Handle follow-through**: If a change requires updates in multiple files, do them all in the same turn
+5. **Verify after changes**: Run relevant checks (lint, build, test) in the same turn when possible
+
+## Judgment Criteria
+
+Before ending your turn, ask:
+- Is the user's request fully resolved? ← **This is key**
+- Would the user need to say "continue" or "keep going"? → If yes, you're not done
+- Are there obvious follow-up steps you already know about? → Do them now
+
+## Exceptions (OK to split across turns)
+
+- User explicitly requests phased execution
+- AskQuestion confirmation is required (plan-approval-mandatory rule)
+- Task genuinely exceeds single-turn capacity (inform user and continue without re-prompting)
+
+**Core Mantra: One request, one complete solution. The user should never have to ask twice.**
