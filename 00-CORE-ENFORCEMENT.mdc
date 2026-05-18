@@ -18,22 +18,24 @@ alwaysApply: true
 - ❌ Read only first 100 lines
 - ❌ Compress or summarize rules
 - ❌ Leave partial work requiring user to say "continue" — solve completely in one turn
+- ❌ Jump to solutions before diagnosing the exact root cause
 
 ## ✅ MUST
 
-### Mandatory Checks in thinking (12 items)
+### Mandatory Checks in thinking (13 items)
 1. [ ] Based on unverified assumptions?
 2. [ ] Execution task or answer question?
-3. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
-4. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
-5. [ ] 🔴 AskQuestion timeout? → Re-ask
-6. [ ] 🔴 Compressing context? → Keep all 18 rules intact
-7. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
-8. [ ] 🔴 Task fully resolved in this turn? No partial work left?
-9. [ ] Generating report file? → Forbidden
-10. [ ] Comparison question? → Focus on differences
-11. [ ] Verified all information?
-12. [ ] 100% certain?
+3. [ ] 🔴 If fixing issue: Have I diagnosed the EXACT root cause first?
+4. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
+5. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
+6. [ ] 🔴 AskQuestion timeout? → Re-ask
+7. [ ] 🔴 Compressing context? → Keep all 19 rules intact
+8. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
+9. [ ] 🔴 Task fully resolved in this turn? No partial work left?
+10. [ ] Generating report file? → Forbidden
+11. [ ] Comparison question? → Focus on differences
+12. [ ] Verified all information?
+13. [ ] 100% certain?
 
 **Any "no" or "uncertain" → STOP and recheck**
 
@@ -47,5 +49,5 @@ alwaysApply: true
 7. Multiple path choices
 8. AskQuestion timeout
 
-### Rules Never Compressed (18)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution
+### Rules Never Compressed (19)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action

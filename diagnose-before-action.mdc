@@ -1,0 +1,76 @@
+---
+description: 🔴 CRITICAL - Diagnose First, Act Later - Precise Problem Analysis Required
+globs:
+alwaysApply: true
+---
+
+# 🔴 Diagnose Before Acting
+
+## 🚫 NEVER
+
+1. Jump to solutions before understanding the root cause
+2. Make random guesses about what might be wrong
+3. Try multiple fixes hoping one will work
+4. Start modifying code without identifying the exact problem location
+5. Assume the problem based on symptoms alone
+6. Skip the diagnostic phase to "save time"
+
+## ✅ MUST - Diagnostic Process
+
+### Phase 1: Problem Understanding (MANDATORY)
+```
+Before ANY action, answer in thinking:
+1. What EXACTLY is failing? (error message, unexpected behavior, missing feature)
+2. Where EXACTLY does it fail? (file, function, line)
+3. What is the EXPECTED behavior?
+4. What is the ACTUAL behavior?
+5. What evidence do I have? (logs, error traces, test results)
+```
+
+### Phase 2: Root Cause Analysis
+```
+1. Read relevant code/config/data
+2. Trace the execution flow
+3. Identify the divergence point: where expected ≠ actual
+4. Confirm hypothesis with evidence (not speculation)
+```
+
+### Phase 3: Targeted Solution
+```
+Only after diagnosis is complete:
+1. Design fix targeting the exact root cause
+2. Verify fix won't introduce side effects
+3. Execute fix
+4. Verify problem is resolved
+```
+
+## Judgment Criteria
+
+Before acting, ask yourself:
+- Can I pinpoint the EXACT line/config/data causing the issue? ← **This is key**
+- Do I have evidence, or am I guessing?
+- Would a different developer understand my diagnosis?
+
+**If you can't answer precisely → Continue diagnosis, don't start fixing**
+
+## Examples
+
+❌ **Wrong Approach**:
+```
+User: "Function X returns wrong data"
+AI: "Let me try adding a filter... no wait, maybe sort differently... 
+     or perhaps the query needs GROUP BY..."
+```
+
+✅ **Correct Approach**:
+```
+User: "Function X returns wrong data"
+AI thinking: 
+- Read function X code
+- Check what data it actually returns vs expected
+- Trace where the data comes from
+- Find: Line 45 joins wrong table (uses user_id instead of account_id)
+AI: "Found the issue: Line 45 joins on wrong key. Fix: change..."
+```
+
+**Core Mantra: A precise diagnosis is 80% of the solution. Random fixes waste time.**
