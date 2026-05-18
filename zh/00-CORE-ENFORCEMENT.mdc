@@ -29,7 +29,7 @@ alwaysApply: true
 4. [ ] 🔴 是否涉及用户选择/判断/确认？→ 用AskQuestion
 5. [ ] 🔴 制定了方案？→ 用AskQuestion确认后再执行
 6. [ ] 🔴 AskQuestion超时？→ 重新提问
-7. [ ] 🔴 压缩上下文？→ 19个规则完整保留
+7. [ ] 🔴 压缩上下文？→ 20个规则完整保留
 8. [ ] 🔴 回答是否聚焦用户问题？无不必要发散？
 9. [ ] 🔴 任务是否在本轮完整解决？有无遗留半成品？
 10. [ ] 要生成报告文件？→ 禁止
@@ -49,5 +49,5 @@ alwaysApply: true
 7. 多个路径选择
 8. AskQuestion超时
 
-### 规则永不压缩（19个）
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action
+### 规则永不压缩（20个）
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action, context-compression

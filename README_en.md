@@ -1,115 +1,117 @@
-# Cursor Global Rules (English Version)
+# Cursor Global Rules
 
-Optimized Cursor global rules set, all rules automatically apply to all projects.
+Global rule files for Cursor IDE, applicable to all projects.
 
-[中文版本](./README.md)
+## Statistics
 
-## 📍 Rules Location
+- **Total**: 20 core rules (Chinese + English versions)
+- **Chinese**: 20 files in `zh/` directory
+- **English**: 20 files in root directory
+- **Total Lines**: ~550 (Chinese) + ~550 (English) = 1100 lines
+- **Streamlining**: Reduced from 4166 to 550 lines (87% reduction) while maintaining strong control
 
-**English Rules (Default)**: `~/.cursor/rules/*.mdc`  
-**Chinese Rules**: `~/.cursor/rules/zh/*.mdc`
+## Rule Categories
 
-Windows Path: `%USERPROFILE%\.cursor\rules\`
+### Core Execution Rules (8)
+| File | Description |
+|------|-------------|
+| `00-CORE-ENFORCEMENT.mdc` | Core enforcement rules (highest priority) |
+| `zero-speculation-mandatory.mdc` | Zero speculation enforcement (thinking self-check) |
+| `diagnose-before-action.mdc` | Diagnose first, act later - no blind fixes |
+| `solve-not-suppress.mdc` | Solve problems, don't suppress them |
+| `no-reckless-file-deletion.mdc` | Prohibit reckless file deletion |
+| `plan-approval-mandatory.mdc` | Mandatory plan confirmation before execution |
+| `ask-timeout-retry-mandatory.mdc` | Must retry AskQuestion on timeout |
+| `single-turn-resolution.mdc` | Complete resolution in single turn |
 
-## 📊 Statistics
+### User Interaction Rules (2)
+| File | Description |
+|------|-------------|
+| `decision-change-approval.mdc` | All user choices must use AskQuestion tool |
+| `no-unnecessary-divergence.mdc` | Prohibit unnecessary thought divergence |
 
-### English Rules (17 - Root Directory)
-- Location: `~/.cursor/rules/*.mdc`
-- Total Lines: **521 lines**
-- Average Lines/File: **30.6 lines**
-- Largest Rule: `zero-speculation-mandatory.mdc` (70 lines)
-- Smallest Rule: `essential-problem-focus.mdc` (17 lines)
+### Core Principle Rules (7)
+| File | Description |
+|------|-------------|
+| `adaptive-thinking.mdc` | Adaptive thinking depth control |
+| `no-assumption-core.mdc` | Zero assumption principle |
+| `no-inference-verification-required.mdc` | No inference, must verify |
+| `data-driven-decisions.mdc` | Data-driven decision making |
+| `task-vs-question-identification.mdc` | Task vs question identification |
+| `no-report-files.mdc` | Prohibit generating report documents |
+| `plan-before-implementation.mdc` | Plan before implementation |
 
-### Chinese Rules (17 - zh Directory)
-- Location: `~/.cursor/rules/zh/*.mdc`
-- Total Lines: **521 lines**
-- Fully corresponds to English version
+### Workflow Rules (3)
+| File | Description |
+|------|-------------|
+| `essential-problem-focus.mdc` | Focus on essential problems |
+| `rules-self-check.mdc` | Rules self-check mechanism |
+| `context-compression.mdc` | Context compression strategy |
 
-### Streamlining Effect
-- Original Total Lines: **4,166 lines**
-- After Streamlining: **521 lines**
-- **87.5% Reduction**, maintaining strong control
+## Usage
 
-## 📋 Current Active Rules (17)
+### Method 1: Clone Repository to Global Rules Directory
 
-All rules configured with `alwaysApply: true`, automatically active in all conversations.
+```bash
+# Windows (Git Bash)
+cd ~/.cursor/rules/
+git init
+git remote add origin https://github.com/azrael-hao/cursor-global-rules.git
+git pull origin master
 
-### 🔴 Core Execution Rules (7 - CRITICAL)
-1. **00-CORE-ENFORCEMENT.mdc** (49 lines) - Core enforcement rules, must follow for all operations
-2. **zero-speculation-mandatory.mdc** (70 lines) - Zero speculation enforcement, thinking must self-check
-3. **solve-not-suppress.mdc** (33 lines) - Solve problems, don't suppress them
-4. **no-reckless-file-deletion.mdc** (40 lines) - No reckless file deletion
-5. **plan-approval-mandatory.mdc** (38 lines) - Mandatory approval before plan execution
-6. **ask-timeout-retry-mandatory.mdc** (31 lines) - Must re-ask after AskQuestion timeout
-7. **no-unnecessary-divergence.mdc** (37 lines) - No unnecessary divergence, focus on user's actual problem
-
-### 🔴 User Interaction Rules (1 - CRITICAL)
-8. **decision-change-approval.mdc** (34 lines) - All user selections must use AskQuestion tool
-
-### ⚠️ Core Principle Rules (7)
-9. **adaptive-thinking.mdc** (23 lines) - Adaptive thinking depth control
-10. **no-assumption-core.mdc** (22 lines) - No assumption principle
-11. **no-inference-verification-required.mdc** (21 lines) - No inference, must verify
-12. **data-driven-decisions.mdc** (23 lines) - Data-driven decisions
-13. **task-vs-question-identification.mdc** (18 lines) - Task vs question identification
-14. **no-report-files.mdc** (20 lines) - No report file generation
-15. **plan-before-implementation.mdc** (21 lines) - Plan before implementation principle
-
-### ℹ️ Workflow Rules (2)
-16. **essential-problem-focus.mdc** (17 lines) - Essential problem focus
-17. **rules-self-check.mdc** (24 lines) - Rules self-supervision mechanism
-
-## 🌍 Directory Structure
-
-```
-~/.cursor/rules/
-├── *.mdc          (17 English rules - default, 521 lines)
-├── zh/
-│   └── *.mdc      (17 Chinese rules, 521 lines)
-├── README.md      (Chinese documentation)
-└── README_en.md   (English documentation)
+# macOS/Linux
+cd ~/.cursor/rules/
+git init
+git remote add origin https://github.com/azrael-hao/cursor-global-rules.git
+git pull origin master
 ```
 
-**Note**:
-- English rules in root directory as default (international standard)
-- Chinese rules in zh/ subdirectory for Chinese users
-- Two versions fully correspond, switch as needed
+### Method 2: Manual Copy
 
-## 🎯 Usage Guide
+Place `.mdc` files in Cursor global rules directory:
 
-### Automatic Rule Loading
-All rules automatically apply in all conversations via `alwaysApply: true`, no manual reference needed.
+- **Windows**: `%USERPROFILE%\.cursor\rules\`
+- **macOS/Linux**: `~/.cursor/rules/`
 
-### Core Principles Quick Reference
-- 🔴 Zero Speculation: Verify first, execute later
-- 🔴 Mandatory Ask: All user interactions must use AskQuestion tool
-- 🔴 Plan Approval: Must request user approval after creating plan before execution
-- 🔴 Solve Problems: Never hide, delete, or ignore errors
-- 🔴 Stay Focused: No unnecessary divergence, go directly to goal
+### Proxy Environment
 
-## 📈 Optimization History
+If you need to access GitHub through a proxy:
 
-### 11th Round Streamlining (2026-05)
-- **Major Streamlining**: From 4166 lines to 521 lines, 87.5% reduction
-- **Strategy**: Remove redundant examples, merge duplicate content, keep core mandatory requirements
-- **Effect**: Maintain strong control, improve loading and comprehension efficiency
-- **Internationalization**: Created 17 English version rules
-- **Directory Structure Optimization**:
-  - English rules (default): `~/.cursor/rules/*.mdc`
-  - Chinese rules: `~/.cursor/rules/zh/*.mdc`
-- **Streamlining Comparison**:
-  - 00-CORE-ENFORCEMENT: 388 lines → 49 lines (87.4% reduction)
-  - zero-speculation-mandatory: 316 lines → 70 lines (77.8% reduction)
-  - no-unnecessary-divergence: 884 lines → 37 lines (95.8% reduction)
-  - decision-change-approval: 323 lines → 34 lines (89.5% reduction)
-  - Other rules average 90%+ reduction
+```bash
+export HTTPS_PROXY=http://127.0.0.1:7897
+export HTTP_PROXY=http://127.0.0.1:7897
+```
 
-## 📚 Related Resources
+For detailed proxy configuration and GitHub CLI usage, refer to Skills repository documentation.
 
-- **Skills Repository**: https://github.com/azrael-hao/cursor-coding-rules-skills
-- **Best Practices**: See examples and explanations in each rule file
-- **Issue Feedback**: Provide feedback via GitHub Issues
+## Rule Format
 
-## ⚠️ Important Notice
+All rule files use `.mdc` format (Markdown + YAML front-matter):
 
-These rules are mandatory constraints on AI behavior. Violating any rule is considered a serious error. AI must perform self-checks in thinking before each operation.
+```yaml
+---
+description: Brief rule description
+globs:              # Empty = no file type restriction
+alwaysApply: true   # true = auto-enabled
+---
+```
+
+- `alwaysApply: true` — Mandatory rules automatically enforced for all projects
+
+## Rules vs Skills
+
+### Rules (Behavioral Constraints)
+- **Characteristics**: Mandatory, auto-enabled (alwaysApply: true)
+- **Content**: NEVER/MUST principles, prohibitions, mandatory checks
+- **Format**: 🚫 NEVER / ✅ MUST / Self-check lists
+- **Location**: `~/.cursor/rules/*.mdc`
+
+### Skills (Method Guides)
+- **Characteristics**: On-demand, not auto-enabled
+- **Content**: Operation steps, technical guides, HOW TO
+- **Format**: Step-by-step instructions, command examples
+- **Location**: `~/.cursor/skills/*/SKILL.md`
+
+**Examples**:
+- ✅ Rule: `diagnose-before-action.mdc` - Prohibit blind fixes without diagnosing root cause (mandatory constraint)
+- ✅ Skill: `github-cli-setup` - GitHub CLI installation and configuration steps (operation guide)

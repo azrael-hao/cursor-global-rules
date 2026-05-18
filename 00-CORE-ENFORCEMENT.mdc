@@ -29,7 +29,7 @@ alwaysApply: true
 4. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
 5. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
 6. [ ] 🔴 AskQuestion timeout? → Re-ask
-7. [ ] 🔴 Compressing context? → Keep all 19 rules intact
+7. [ ] 🔴 Compressing context? → Keep all 20 rules intact
 8. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
 9. [ ] 🔴 Task fully resolved in this turn? No partial work left?
 10. [ ] Generating report file? → Forbidden
@@ -49,5 +49,5 @@ alwaysApply: true
 7. Multiple path choices
 8. AskQuestion timeout
 
-### Rules Never Compressed (19)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action
+### Rules Never Compressed (20)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action, context-compression
