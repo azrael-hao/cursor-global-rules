@@ -8,6 +8,7 @@ alwaysApply: true
 
 ## 🚫 NEVER
 
+- ❌ **Skip loading rules in thinking** — MUST declare applicable rules first
 - ❌ Assume fields/methods/files exist
 - ❌ Use "should", "might", "probably"
 - ❌ Generate `*report.md`, `*list.md`, `*doc.md`
@@ -22,20 +23,45 @@ alwaysApply: true
 
 ## ✅ MUST
 
-### Mandatory Checks in thinking (13 items)
-1. [ ] Based on unverified assumptions?
-2. [ ] Execution task or answer question?
-3. [ ] 🔴 If fixing issue: Have I diagnosed the EXACT root cause first?
-4. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
-5. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
-6. [ ] 🔴 AskQuestion timeout? → Re-ask
-7. [ ] 🔴 Compressing context? → Keep all 20 rules intact
-8. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
-9. [ ] 🔴 Task fully resolved in this turn? No partial work left?
-10. [ ] Generating report file? → Forbidden
-11. [ ] Comparison question? → Focus on differences
-12. [ ] Verified all information?
-13. [ ] 100% certain?
+### 0. Load Rules in Thinking (MANDATORY FIRST STEP)
+
+**Before ANY operation, MUST explicitly state in thinking which rules apply:**
+
+```
+=== Rules Loading ===
+Applicable rules for this task:
+- [Rule Name]: [Brief description of what it requires]
+- [Rule Name]: [Brief description of what it requires]
+=== Rules Loaded ===
+```
+
+**Example:**
+```
+=== Rules Loading ===
+Applicable rules for this task:
+- zero-speculation-mandatory: Must verify file existence before assuming
+- user-interaction-mandatory: Must use AskQuestion for user choices
+- diagnose-before-action: Must identify root cause before fixing
+=== Rules Loaded ===
+```
+
+**Purpose:** Ensures rules are actively loaded and applied, not passively ignored.
+
+### Mandatory Checks in thinking (14 items)
+1. [ ] **Rules loaded and declared in thinking?** ← **MANDATORY FIRST**
+2. [ ] Based on unverified assumptions?
+3. [ ] Execution task or answer question?
+4. [ ] 🔴 If fixing issue: Have I diagnosed the EXACT root cause first?
+5. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
+6. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
+7. [ ] 🔴 AskQuestion timeout? → Re-ask
+8. [ ] 🔴 Compressing context? → Keep all 11 rules intact
+9. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
+10. [ ] 🔴 Task fully resolved in this turn? No partial work left?
+11. [ ] Generating report file? → Forbidden
+12. [ ] Comparison question? → Focus on differences
+13. [ ] Verified all information?
+14. [ ] 100% certain?
 
 **Any "no" or "uncertain" → STOP and recheck**
 
