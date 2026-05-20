@@ -49,8 +49,8 @@ alwaysApply: true
 7. Multiple path choices
 8. AskQuestion timeout
 
-### Rules Never Compressed (10)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
+### Rules Never Compressed (11)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, no-workaround-without-approval, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
 
 ## 📋 Auxiliary Guidelines
 
