@@ -1,5 +1,5 @@
 ---
-description: 🔴 CRITICAL - Diagnose First, Act Later - Precise Problem Analysis Required
+description: 🔴 CRITICAL - Diagnose first, act later - Must analyze precisely
 globs:
 alwaysApply: true
 ---
@@ -8,7 +8,7 @@ alwaysApply: true
 
 ## 🚫 NEVER
 
-1. Jump to solutions before understanding the root cause
+1. Jump to solutions before understanding root cause
 2. Make random guesses about what might be wrong
 3. Try multiple fixes hoping one will work
 4. Start modifying code without identifying the exact problem location

@@ -1,5 +1,5 @@
 ---
-description: 🔴 CRITICAL - Plan Must Be Approved Before Execution
+description: 🔴 CRITICAL - Must confirm before executing plan - Forbidden to execute directly
 globs:
 alwaysApply: true
 ---

@@ -1,5 +1,5 @@
 ---
-description: Rules Self-Check - Ensure Rule Compliance
+description: Rules self-check - Ensure rule compliance
 globs:
 alwaysApply: true
 ---

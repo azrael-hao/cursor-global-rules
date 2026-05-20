@@ -1,5 +1,5 @@
 ---
-description: 🔴 CRITICAL - No Reckless File Deletion - Must Assess Before Deleting
+description: 🔴 CRITICAL - No reckless file deletion - Must assess before deleting
 globs:
 alwaysApply: true
 ---
@@ -32,7 +32,7 @@ alwaysApply: true
 ## File Deletion Risk Levels
 
 | Risk Level | File Type | Handling |
-|-----------|-----------|----------|
+|-----|-----|----|
 | 🔴 High | Core logic, configs, scripts | Must deep assess + user confirm |
 | 🟡 Medium | Utilities, auxiliary files | Search references + user confirm |
 | 🟢 Low | Temp files, logs | Confirm no references + user confirm |

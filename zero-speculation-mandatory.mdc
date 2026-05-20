@@ -1,5 +1,5 @@
 ---
-description: 🔴 CRITICAL - Zero Speculation Enforcement - Mandatory Self-Check in thinking
+description: 🔴 CRITICAL - Zero speculation enforcement - Mandatory self-check in thinking
 globs:
 alwaysApply: true
 ---
@@ -42,7 +42,7 @@ alwaysApply: true
 
 ### Verification by Scenario
 | Scenario | Never | Must |
-|----------|-------|------|
+|----|----|---|
 | Code Modification | Assume method exists | Grep search definition → Read code → Confirm signature |
 | Database Operation | Assume field exists | DESCRIBE table → Confirm field and type |
 | API Call | Assume return format | Read API definition → Confirm return type |
