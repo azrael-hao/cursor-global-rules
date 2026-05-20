@@ -1,5 +1,5 @@
 ---
-description: Context compression strategy when approaching capacity limit. Preserves all 20 rules intact while compressing dialogue history.
+description: Context compression strategy when approaching capacity limit. Preserves all 10 core rules intact while compressing dialogue history.
 globs:
 alwaysApply: true
 ---
@@ -49,27 +49,17 @@ If task too large to complete in single session:
 
 ## 🔴 CRITICAL: Rules Never Compressed
 
-**20 core rules MUST remain intact and accessible:**
-1. 00-CORE-ENFORCEMENT
-2. zero-speculation-mandatory
-3. solve-not-suppress
-4. no-reckless-file-deletion
-5. plan-approval-mandatory
-6. ask-timeout-retry-mandatory
-7. decision-change-approval
-8. adaptive-thinking
-9. no-assumption-core
-10. no-inference-verification-required
-11. data-driven-decisions
-12. task-vs-question-identification
-13. no-report-files
-14. plan-before-implementation
-15. essential-problem-focus
-16. rules-self-check
-17. single-turn-resolution
-18. diagnose-before-action
-19. no-unnecessary-divergence
-20. context-compression
+**10 core rules MUST remain intact and accessible:**
+1. 00-CORE-ENFORCEMENT (includes 5 auxiliary guidelines)
+2. zero-speculation-mandatory (unified verification principles)
+3. user-interaction-mandatory (unified user interaction rules)
+4. diagnose-before-action
+5. solve-not-suppress
+6. single-turn-resolution
+7. no-unnecessary-divergence
+8. no-reckless-file-deletion
+9. adaptive-thinking
+10. context-compression
 
 **Forbidden during compression:**
 - ❌ Compress or summarize rule content
@@ -77,7 +67,7 @@ If task too large to complete in single session:
 - ❌ Replace complete rules with summaries
 
 **Required during compression:**
-- ✅ Keep all 20 rules complete and accessible
+- ✅ Keep all 10 core rules complete and accessible
 - ✅ Explicitly state in summary "All rules remain intact"
 
 ## Prevention Measures

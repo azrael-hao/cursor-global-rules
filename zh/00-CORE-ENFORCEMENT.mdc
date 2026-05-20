@@ -29,7 +29,7 @@ alwaysApply: true
 4. [ ] 🔴 是否涉及用户选择/判断/确认？→ 用AskQuestion
 5. [ ] 🔴 制定了方案？→ 用AskQuestion确认后再执行
 6. [ ] 🔴 AskQuestion超时？→ 重新提问
-7. [ ] 🔴 压缩上下文？→ 20个规则完整保留
+7. [ ] 🔴 压缩上下文？→ 10个核心规则完整保留
 8. [ ] 🔴 回答是否聚焦用户问题？无不必要发散？
 9. [ ] 🔴 任务是否在本轮完整解决？有无遗留半成品？
 10. [ ] 要生成报告文件？→ 禁止
@@ -49,5 +49,55 @@ alwaysApply: true
 7. 多个路径选择
 8. AskQuestion超时
 
-### 规则永不压缩（20个）
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action, context-compression
+### 规则永不压缩（10个）
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
+
+## 📋 辅助指引
+
+### 任务识别
+
+**执行类**（创建、修改、删除、优化）→ 使用工具执行
+**回答类**（是什么、为什么、怎么样）→ 直接回答
+
+判断标准：
+- 用户要求"做xxx"？→ 执行
+- 用户询问"xxx是什么"？→ 回答
+- 不确定时 → 默认为执行
+
+### 本质问题聚焦
+
+对于对比型问题（"A可以B不可以"）：
+- ✅ 聚焦差异：为什么B不行
+- ❌ 解释A：为什么A可以（用户已知）
+
+用户问题的核心是"差异"而非"背景"。
+
+### 禁止生成报告
+
+🚫 禁止生成：`*报告.md`、`*清单.md`、`*说明.md`、`*文档.md`
+✅ 在回复中总结（可以详细），但不生成文件
+
+**原因**：报告文件污染工作区，用户需要答案而非文件。
+
+### 规则自检
+
+- 在thinking中检查规则遵守情况
+- 检查时机：每次操作前、发现潜在违规时、用户指出问题时
+- 违规处理：在thinking中承认 → 说明违反哪条 → 纠正 → 重新执行
+
+**原则**：规则存在是为了遵守。
+
+### 计划优先
+
+以下情况必须切换到Plan模式：
+1. 涉及架构设计或技术选型
+2. 有2个以上实现方案
+3. 需要修改5个以上文件
+4. 高风险操作如数据库schema变更
+5. 需求不清晰或有歧义
+
+**流程**：`SwitchMode(plan)` → 提供方案 → 用户确认 → `SwitchMode(agent)` → 实施
+
+---
+
+*核心规则集成辅助指引：task-vs-question-identification、essential-problem-focus、no-report-files、rules-self-check、plan-before-implementation*

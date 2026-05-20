@@ -49,5 +49,55 @@ alwaysApply: true
 7. Multiple path choices
 8. AskQuestion timeout
 
-### Rules Never Compressed (20)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, solve-not-suppress, no-reckless-file-deletion, plan-approval-mandatory, ask-timeout-retry-mandatory, no-unnecessary-divergence, decision-change-approval, adaptive-thinking, no-assumption-core, no-inference-verification-required, data-driven-decisions, task-vs-question-identification, no-report-files, plan-before-implementation, essential-problem-focus, rules-self-check, single-turn-resolution, diagnose-before-action, context-compression
+### Rules Never Compressed (10)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
+
+## 📋 Auxiliary Guidelines
+
+### Task Identification
+
+**Execution** (create, modify, delete, optimize) → Use tools to execute
+**Answer** (what is, why, how) → Answer directly
+
+Judgment:
+- User requests "do xxx"? → Execution
+- User asks "what is xxx"? → Answer
+- When uncertain → Default to execution
+
+### Essential Problem Focus
+
+For comparison questions ("A works but B doesn't"):
+- ✅ Focus on difference: Why B doesn't work
+- ❌ Explain A: Why A works (user already knows)
+
+Core of user's question is "difference", not "background".
+
+### No Report Files
+
+🚫 Never generate: `*report.md`, `*list.md`, `*doc.md`, `*documentation.md`
+✅ Summarize directly in response (can be detailed), but don't generate files
+
+**Reason**: Report files pollute workspace, users need answers, not files.
+
+### Rules Self-Check
+
+- Check compliance with all rules in thinking
+- Check timing: Before each operation, when potential violation detected, when user points out issue
+- Violation handling: Acknowledge → State which rule → Correct → Re-execute
+
+**Principle**: Rules exist to be followed.
+
+### Plan Before Implementation
+
+Must switch to Plan Mode when:
+1. Architecture design or technology selection involved
+2. 2+ implementation approaches
+3. Need to modify 5+ files
+4. High-risk operations like database schema changes
+5. Requirements unclear or ambiguous
+
+**Process**: `SwitchMode(plan)` → Provide solution → User confirms → `SwitchMode(agent)` → Implement
+
+---
+
+*Core rule with integrated auxiliary guidelines: task-vs-question-identification, essential-problem-focus, no-report-files, rules-self-check, plan-before-implementation*

@@ -1,16 +1,21 @@
 ---
-description: 🔴 CRITICAL - Zero speculation enforcement - Mandatory self-check in thinking
+description: 🔴 CRITICAL - Zero speculation enforcement - No assumption, no inference, data-driven - Mandatory self-check in thinking
 globs:
 alwaysApply: true
 ---
 
 # 🔴 Zero Speculation Enforcement
 
+> **Unified verification principles**: No speculation, no assumption, no inference, data-driven decisions.
+
 ## 🚫 NEVER
 
+### Speculation and Assumptions
 1. **Speculate**: Assume files/methods/fields/variables/data structures/types exist
 2. **Predict**: Predict code behavior/performance/data/errors (must actually run/test/query)
 3. **Guess**: Judge by feeling, guess by experience (unverified), theoretical inference (unproven)
+4. **Assume**: Assume data structures/types/formats, business logic/processes/rules
+5. **Infer**: Infer function from naming, behavior from type, structure from pattern
 
 ## 🔴 Mandatory Self-Check in thinking
 
@@ -51,9 +56,19 @@ alwaysApply: true
 
 ## 🚨 Forbidden Vocabulary
 
-❌ "should", "might", "probably", "estimate", "theoretically", "by convention", "generally"
+❌ "should", "might", "probably", "estimate", "theoretically", "by convention", "generally", "about", "expect"
 
 ✅ Replace with: "Let me check", "Let me verify", "Let me confirm"
+
+## 📊 Data-Driven Decision Scenarios
+
+| Scenario | Wrong Approach | Correct Approach |
+|----------|---------------|------------------|
+| Performance Optimization | "This query should be slow" | EXPLAIN ANALYZE to view actual execution plan |
+| Data Scale | "Table doesn't have much data" | SELECT COUNT(*) to get actual row count |
+| Index Effect | "Adding index should speed up" | Compare actual performance before/after index |
+| Resource Usage | "Memory usage not high" | Check monitoring data (CPU, memory, QPS) |
+| Capacity Planning | "Need xxx next year probably" | Query historical growth data |
 
 ## Trusted vs Untrusted Information
 
@@ -67,4 +82,15 @@ alwaysApply: true
 - Inference from experience
 - Application of theoretical knowledge
 
+## Core Principles
+
+1. **No Assumption**: Never assume anything exists or works in a certain way → Always verify
+2. **No Inference**: Never infer behavior from names or types → Always check implementation
+3. **Data-Driven**: Never estimate or guess → Always get real data
+4. **Verification First**: Read, Grep, DESCRIBE, Query before deciding
+
 **Core Mantra: Verify first, execute later. No verification, no operation.**
+
+---
+
+*This rule consolidates: zero-speculation-mandatory, no-assumption-core, no-inference-verification-required, data-driven-decisions*
