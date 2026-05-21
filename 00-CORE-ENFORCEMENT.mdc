@@ -9,9 +9,12 @@ alwaysApply: true
 ## 🚫 NEVER
 
 - ❌ **Skip loading rules in thinking** — MUST declare applicable rules first
+- ❌ **Generate `*report.md`, `*summary.md`, `*list.md`, `*doc.md`** — ⚠️ SEVERE TOKEN WASTE
+  - **Without explicit user request → FORBIDDEN**
+  - Summarize in chat response instead
+  - Each unnecessary .md file wastes hundreds/thousands of tokens
 - ❌ Assume fields/methods/files exist
 - ❌ Use "should", "might", "probably"
-- ❌ Generate `*report.md`, `*list.md`, `*doc.md`
 - ❌ Execute after planning (must confirm with AskQuestion first)
 - ❌ List options in chat ("1.2.3.", "A.B.C.", "yes/no") → Must use AskQuestion tool
 - ❌ **Substitute AskQuestion with "text inquiry" or "conversational clarification"** → SEVERE VIOLATION
@@ -50,16 +53,16 @@ Applicable rules for this task:
 
 ### Mandatory Checks in thinking (14 items)
 1. [ ] **Rules loaded and declared in thinking?** ← **MANDATORY FIRST**
-2. [ ] Based on unverified assumptions?
-3. [ ] Execution task or answer question?
-4. [ ] 🔴 If fixing issue: Have I diagnosed the EXACT root cause first?
-5. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
-6. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
-7. [ ] 🔴 AskQuestion timeout? → Re-ask
-8. [ ] 🔴 Compressing context? → Keep all 11 rules intact
-9. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
-10. [ ] 🔴 Task fully resolved in this turn? No partial work left?
-11. [ ] Generating report file? → Forbidden
+2. [ ] **About to generate .md report/summary/list file?** → ⚠️ **FORBIDDEN - TOKEN WASTE**
+3. [ ] Based on unverified assumptions?
+4. [ ] Execution task or answer question?
+5. [ ] 🔴 If fixing issue: Have I diagnosed the EXACT root cause first?
+6. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
+7. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
+8. [ ] 🔴 AskQuestion timeout? → Re-ask
+9. [ ] 🔴 Compressing context? → Keep all 11 rules intact
+10. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
+11. [ ] 🔴 Task fully resolved in this turn? No partial work left?
 12. [ ] Comparison question? → Focus on differences
 13. [ ] Verified all information?
 14. [ ] 100% certain?
@@ -99,12 +102,25 @@ For comparison questions ("A works but B doesn't"):
 
 Core of user's question is "difference", not "background".
 
-### No Report Files
+### No Report Files - ⚠️ SEVERE TOKEN WASTE
 
-🚫 Never generate: `*report.md`, `*list.md`, `*doc.md`, `*documentation.md`
-✅ Summarize directly in response (can be detailed), but don't generate files
+🚫 **STRICTLY FORBIDDEN** without explicit user request:
+- `*report.md`, `*summary.md`, `*总结.md`
+- `*list.md`, `*清单.md`
+- `*doc.md`, `*documentation.md`, `*说明.md`
+- ANY `.md` file for summarizing/documenting completed work
 
-**Reason**: Report files pollute workspace, users need answers, not files.
+✅ **CORRECT APPROACH**:
+- Provide detailed summary in chat response
+- Use structured text (bullet points, tables) in response
+- NO separate file unless user explicitly asks
+
+⚠️ **TOKEN COST**:
+- Each unnecessary .md file: 500-3000+ tokens wasted
+- Repeated violations: severe cumulative waste
+- User pays for every wasted token
+
+**CRITICAL**: This is the #2 mandatory check in thinking, right after rule loading!
 
 ### Rules Self-Check
 
