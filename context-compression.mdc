@@ -49,7 +49,7 @@ If task too large to complete in single session:
 
 ## 🔴 CRITICAL: Rules Never Compressed
 
-**11 core rules MUST remain intact and accessible:**
+**12 core rules MUST remain intact and accessible:**
 1. 00-CORE-ENFORCEMENT (includes 5 auxiliary guidelines)
 2. zero-speculation-mandatory (unified verification principles)
 3. user-interaction-mandatory (unified user interaction rules)
@@ -58,9 +58,10 @@ If task too large to complete in single session:
 6. single-turn-resolution
 7. no-unnecessary-divergence
 8. no-workaround-without-approval
-9. no-reckless-file-deletion
-10. adaptive-thinking
-11. context-compression
+9. fix-root-cause-not-adapt (universal principle: fix environment not downgrade requirement)
+10. no-reckless-file-deletion
+11. adaptive-thinking
+12. context-compression
 
 **Forbidden during compression:**
 - ❌ Compress or summarize rule content
@@ -68,7 +69,7 @@ If task too large to complete in single session:
 - ❌ Replace complete rules with summaries
 
 **Required during compression:**
-- ✅ Keep all 11 core rules complete and accessible
+- ✅ Keep all 12 core rules complete and accessible
 - ✅ Explicitly state in summary "All rules remain intact"
 
 ## Prevention Measures

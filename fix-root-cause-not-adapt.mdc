@@ -1,0 +1,148 @@
+---
+description: Fix root cause, not adapt to wrong environment - Universal principle
+globs:
+alwaysApply: true
+---
+
+# Fix Root Cause, Not Adapt to Wrong Environment
+
+> **Universal Principle: When facing ANY problem, fix the ROOT CAUSE (environment/config/dependency), NOT adapt the solution to accommodate the wrong environment.**
+
+## 🚫 NEVER - Universal Anti-Patterns
+
+**Strictly forbidden when facing ANY type of problem:**
+- ❌ **Downgrade requirements to match broken environment**
+- ❌ **Modify solution to work around environment issues**
+- ❌ **Choose "easy but wrong" over "complex but right"**
+- ❌ **Assume fixing environment is "too hard" for user**
+- ❌ **Remove features/functionality just because environment lacks support**
+- ❌ **Accept broken/outdated environment as immutable constraint**
+
+## ✅ MUST - Universal Principles
+
+### 1. Problem Analysis - First Principles
+
+**When ANY problem occurs, identify:**
+1. **What is broken?** (Requirement vs Reality mismatch)
+2. **Where is the root cause?** (Environment, Config, Dependency, Permission, etc.)
+3. **What should be fixed?** (The root cause, NOT the requirement)
+4. **Why does requirement exist?** (Design intent, feature need, best practice)
+
+### 2. Decision Priority - Universal Hierarchy
+
+**ALWAYS follow this priority:**
+```
+Priority 1: Fix root cause (environment, config, dependency)
+Priority 2: Ask user which approach they prefer
+Priority 3: Document risks if user insists on workaround
+Priority 4: NEVER unilaterally choose workaround
+```
+
+### 3. Correct Reasoning Pattern
+
+❌ **WRONG thinking pattern**:
+```
+"X doesn't work because environment lacks Y,
+let me change X to not need Y"
+```
+
+✅ **CORRECT thinking pattern**:
+```
+"X doesn't work because environment lacks Y,
+this means:
+1. X was designed to use Y for good reasons
+2. Removing Y requirement might break functionality
+3. Should fix environment to provide Y
+4. Must ask user before changing approach"
+```
+
+## Universal Examples
+
+### Category 1: Version Mismatch
+```
+Problem: Code requires Java 21, environment has Java 11
+❌ Wrong: Downgrade code to Java 11
+✅ Right: Install Java 21
+
+Problem: Code requires Node 20, environment has Node 16
+❌ Wrong: Rewrite code for Node 16
+✅ Right: Install Node 20
+```
+
+### Category 2: Missing Dependencies
+```
+Problem: Code needs library X, but it's not installed
+❌ Wrong: Rewrite code to avoid library X
+✅ Right: Install library X
+
+Problem: System missing package Y for feature Z
+❌ Wrong: Remove feature Z
+✅ Right: Install package Y
+```
+
+### Category 3: Configuration Issues
+```
+Problem: Database charset is latin1, code needs utf8mb4
+❌ Wrong: Change code to use latin1
+✅ Right: Change database charset to utf8mb4
+
+Problem: Server timezone wrong, causing time calculation errors
+❌ Wrong: Add workaround calculations in code
+✅ Right: Fix server timezone configuration
+```
+
+### Category 4: Permission/Access Issues
+```
+Problem: Code needs write permission to /var/log
+❌ Wrong: Change code to skip logging
+✅ Right: Grant proper permissions or change log path
+
+Problem: API requires authentication token
+❌ Wrong: Remove auth requirement in code
+✅ Right: Configure proper authentication
+```
+
+### Category 5: Performance/Resource Issues
+```
+Problem: Large dataset causes slow query
+❌ Wrong: Reduce dataset artificially
+✅ Right: Add indexes, optimize query, scale resources
+
+Problem: Memory limit too low for operation
+❌ Wrong: Reduce functionality to fit limit
+✅ Right: Increase memory limit or optimize memory usage
+```
+
+### Category 6: Network/Connectivity Issues
+```
+Problem: Firewall blocks required port
+❌ Wrong: Change code to use different protocol
+✅ Right: Configure firewall to allow port
+
+Problem: Proxy required for external access
+❌ Wrong: Remove external dependency
+✅ Right: Configure proxy settings
+```
+
+## Core Mantras
+
+1. **"Fix the environment, not the requirement"**
+2. **"Respect the original design intent"**
+3. **"Don't compromise solution quality for environmental convenience"**
+4. **"Easy wrong is worse than hard right"**
+5. **"Environment should adapt to needs, not needs to broken environment"**
+
+## Mandatory Checks in Thinking
+
+When encountering ANY problem:
+- [ ] Have I identified the ROOT CAUSE?
+- [ ] Am I about to adapt solution to broken environment?
+- [ ] Should I fix environment instead?
+- [ ] Have I asked user which approach they prefer?
+- [ ] Am I choosing "easy wrong" over "hard right"?
+
+**If ANY answer suggests "adapting to broken environment" → STOP and use AskQuestion**
+
+---
+
+*This is a UNIVERSAL principle applicable to ALL problems, not just code issues*

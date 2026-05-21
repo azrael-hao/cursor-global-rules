@@ -60,7 +60,7 @@ Applicable rules for this task:
 6. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
 7. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
 8. [ ] 🔴 AskQuestion timeout? → Re-ask
-9. [ ] 🔴 Compressing context? → Keep all 11 rules intact
+9. [ ] 🔴 Compressing context? → Keep all 12 rules intact
 10. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
 11. [ ] 🔴 Task fully resolved in this turn? No partial work left?
 12. [ ] Comparison question? → Focus on differences
@@ -79,8 +79,8 @@ Applicable rules for this task:
 7. Multiple path choices
 8. AskQuestion timeout
 
-### Rules Never Compressed (11)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, no-workaround-without-approval, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
+### Rules Never Compressed (12)
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, no-workaround-without-approval, fix-root-cause-not-adapt, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
 
 ## 📋 Auxiliary Guidelines
 
