@@ -10,11 +10,24 @@ alwaysApply: true
 
 ## 🚫 Absolutely Forbidden
 
-### Never List Options in Chat
-**Strictly forbidden to list options in chat in any form:**
+### Never Use Text Instead of AskQuestion Tool
+
+**🚨 CRITICAL: Any form of text inquiry is a SERIOUS VIOLATION**
+
+**Strictly forbidden - ALL forms of text-based questions:**
 - ❌ "A. B. C." or "1. 2. 3."
 - ❌ "- Option 1  - Option 2"
 - ❌ "Which do you choose?", "Execute? (yes/no)"
+- ❌ **"Let me ask you in text form"** ← WORKAROUND ATTEMPT
+- ❌ **"I should directly inquire for more information"** ← WORKAROUND ATTEMPT
+- ❌ **"Let's have a conversation to clarify requirements"** ← WORKAROUND ATTEMPT
+- ❌ **"I'll use text instead of AskQuestion to inquire"** ← WORKAROUND ATTEMPT
+- ❌ **Any statement suggesting "text inquiry" or "conversational clarification"**
+
+**⚠️ Key Point:**
+- If AI suggests "asking in text", "conversational inquiry", or "let me ask you" → **SEVERE RULE VIOLATION**
+- The ONLY allowed method is calling the `AskQuestion` tool
+- No exceptions, no workarounds, no alternatives
 
 ### Never Execute Plans Without Approval
 - ❌ Execute immediately after creating plan
@@ -80,6 +93,8 @@ alwaysApply: true
 - **Full Coverage**: All user interaction scenarios must use AskQuestion
 - **Zero Exceptions**: Must Ask even if "obvious"
 - **Format Unique**: Only AskQuestion tool, never text options
+- **No Workarounds**: Cannot substitute tool with "text inquiry", "conversational clarification", or any alternative method
+- **Tool Only**: If you need user input → Call AskQuestion tool. No thinking "I should ask in text" allowed
 - **Approval Required**: Plans need confirmation before execution
 - **No Timeout Guessing**: Re-ask after timeout, never assume
 

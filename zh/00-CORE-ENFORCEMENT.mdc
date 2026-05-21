@@ -14,6 +14,7 @@ alwaysApply: true
 - ❌ 生成`*报告.md`、`*清单.md`、`*说明.md`
 - ❌ 制定方案后直接执行（必须先用AskQuestion确认）
 - ❌ 聊天中列选项（"1.2.3."、"A.B.C."、"是/否"）→ 必须用AskQuestion工具
+- ❌ **用"文字询问"或"对话引导"代替AskQuestion工具** → 严重违规
 - ❌ AskQuestion超时后私自判断
 - ❌ 过度延伸、讨论无关话题
 - ❌ 只读前100行
