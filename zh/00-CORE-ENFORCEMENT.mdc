@@ -60,7 +60,7 @@ alwaysApply: true
 6. [ ] 🔴 是否涉及用户选择/判断/确认？→ 用AskQuestion
 7. [ ] 🔴 制定了方案？→ 用AskQuestion确认后再执行
 8. [ ] 🔴 AskQuestion超时？→ 重新提问
-9. [ ] 🔴 压缩上下文？→ 12个核心规则完整保留
+9. [ ] 🔴 压缩上下文？→ 10个核心规则完整保留
 10. [ ] 🔴 回答是否聚焦用户问题？无不必要发散？
 11. [ ] 🔴 任务是否在本轮完整解决？有无遗留半成品？
 12. [ ] 对比型问题？→ 聚焦差异
@@ -79,8 +79,8 @@ alwaysApply: true
 7. 多个路径选择
 8. AskQuestion超时
 
-### 规则永不压缩（11个）
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-not-suppress, no-reckless-file-deletion, no-unnecessary-divergence, no-workaround-without-approval, adaptive-thinking, single-turn-resolution, diagnose-before-action, context-compression
+### 规则永不压缩（10个）
+00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-root-cause-mandatory, diagnose-before-action, no-reckless-file-deletion, no-unnecessary-divergence, adaptive-thinking, single-turn-resolution, context-compression
 
 ## 📋 辅助指引
 

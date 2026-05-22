@@ -49,19 +49,17 @@ alwaysApply: true
 
 ## 🔴 关键：规则永不压缩
 
-**12个核心规则必须保持完整和可访问：**
+**10个核心规则必须保持完整和可访问：**
 1. 00-CORE-ENFORCEMENT（包含5个辅助指引）
 2. zero-speculation-mandatory（统一验证原则）
 3. user-interaction-mandatory（统一用户交互规则）
-4. diagnose-before-action
-5. solve-not-suppress
-6. single-turn-resolution
+4. solve-root-cause-mandatory（统一问题解决：禁止压制/绕过/适应）
+5. diagnose-before-action
+6. no-reckless-file-deletion
 7. no-unnecessary-divergence
-8. no-workaround-without-approval
-9. fix-root-cause-not-adapt（通用原则：修复环境而非降级需求）
-10. no-reckless-file-deletion
-11. adaptive-thinking
-12. context-compression
+8. adaptive-thinking
+9. single-turn-resolution
+10. context-compression
 
 **压缩时禁止：**
 - ❌ 压缩或总结规则内容
@@ -69,7 +67,7 @@ alwaysApply: true
 - ❌ 用摘要替代完整规则
 
 **压缩时必须：**
-- ✅ 保持所有12个核心规则完整可访问
+- ✅ 保持所有10个核心规则完整可访问
 - ✅ 在摘要中明确说明"所有规则保持完整"
 
 ## 预防措施

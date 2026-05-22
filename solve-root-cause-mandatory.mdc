@@ -1,0 +1,196 @@
+---
+description: 🔴 CRITICAL - Must solve root cause - No suppress, no workaround, no adapt to wrong environment
+globs:
+alwaysApply: true
+---
+
+# 🔴 Solve Root Cause Mandatory
+
+> **Universal Principle: Always solve the ROOT CAUSE. Never suppress problems, bypass with workarounds, or adapt to wrong environment without user approval.**
+
+## 🚫 NEVER - Three Forbidden Anti-Patterns
+
+### 1. Suppression (Hiding Problems)
+
+**Strictly forbidden:**
+- ❌ Delete error-throwing code
+- ❌ Catch exceptions and swallow them
+- ❌ Comment out failing tests
+- ❌ Disable linter warnings
+- ❌ Remove validation logic
+- ❌ Manually modify data to accommodate code
+- ❌ Lower security standards
+- ❌ Bypass permission checks
+
+### 2. Workaround (Bypassing Problems)
+
+**Strictly forbidden:**
+- ❌ Skip solving the actual issue and suggest alternatives
+- ❌ Propose workarounds without fixing the underlying problem
+- ❌ Change requirements to make it "easier"
+- ❌ Switch approaches without user consent
+- ❌ Use "too complex" as excuse to avoid solving
+
+### 3. Adaptation to Wrong Environment
+
+**Strictly forbidden:**
+- ❌ Downgrade requirements to match broken environment (e.g., Java 21→11)
+- ❌ Modify solution to work around environment issues
+- ❌ Remove features just because environment lacks support
+- ❌ Accept broken/outdated environment as immutable constraint
+- ❌ Choose "easy but wrong" over "complex but right"
+
+## ✅ MUST - Correct Problem-Solving Process
+
+### Step 1: Diagnose Root Cause (see diagnose-before-action rule)
+1. What EXACTLY is failing?
+2. Where EXACTLY does it fail?
+3. What is the root cause?
+4. Why does the requirement exist?
+
+### Step 2: Identify Correct Solution
+```
+Priority 1: Fix root cause directly
+Priority 2: If root cause solution is difficult → Use AskQuestion
+Priority 3: Get user approval before any workaround/adaptation
+Priority 4: NEVER unilaterally choose workaround
+```
+
+### Step 3: Implement and Verify
+1. Implement fix targeting exact root cause
+2. Verify problem no longer occurs
+3. Verify no new problems introduced
+4. Confirm solution is sustainable (won't break again)
+
+## Mandatory AskQuestion Scenarios
+
+Use AskQuestion tool when:
+
+1. **Root cause solution is very difficult** - Requires significant work/resources
+2. **Multiple valid approaches exist** - Need user to choose preferred solution
+3. **Considering ANY workaround** - Alternative that doesn't fix root cause
+4. **Environment fix seems "too hard"** - Want to downgrade requirement instead
+5. **Trade-offs exist** - Quick fix vs proper fix, performance vs maintainability
+
+### AskQuestion Template
+
+```javascript
+AskQuestion({
+  title: "Problem Resolution Approach",
+  questions: [{
+    id: "approach",
+    prompt: "Problem: [describe issue]
+             Root cause: [exact cause]
+             
+             Option A: [fix root cause] (recommended)
+               - Solves permanently
+               - Respects design intent
+               - May require: [effort/resources]
+             
+             Option B: [workaround/adaptation]
+               - Doesn't fix root cause
+               - Risks: [list risks]
+               - Why considering: [reason]
+             
+             Which approach do you prefer?",
+    options: [
+      { id: "fix", label: "Fix root cause (Option A - recommended)" },
+      { id: "workaround", label: "Use workaround (Option B)" }
+    ]
+  }]
+})
+```
+
+## Universal Examples by Category
+
+### Category 1: Suppression Examples
+
+❌ **Wrong**:
+```
+Problem: Function throws error
+Action: try { riskyFunction() } catch (e) { /* ignore */ }
+```
+
+✅ **Correct**:
+```
+Problem: Function throws error
+Action: Investigate why it throws → Fix the cause → Remove need for try-catch
+```
+
+### Category 2: Workaround Examples
+
+❌ **Wrong**:
+```
+Problem: Query times out
+Action: Reduce data range to avoid timeout
+```
+
+✅ **Correct**:
+```
+Problem: Query times out
+Root cause: Missing index
+Action: Add index → Query now fast with full data
+```
+
+### Category 3: Environment Adaptation Examples
+
+❌ **Wrong**:
+```
+Problem: Code requires Java 21, environment has Java 11
+Action: Downgrade pom.xml to Java 11
+```
+
+✅ **Correct**:
+```
+Problem: Code requires Java 21, environment has Java 11
+Root cause: Environment outdated
+Action: Install Java 21 → Code works as designed
+```
+
+### Category 4: Multi-Category Example
+
+❌ **Wrong - All three anti-patterns**:
+```
+Problem: Database charset is latin1, causing emoji errors
+Actions (all wrong):
+- Suppress: Catch UnicodeError and skip emoji
+- Workaround: Convert emoji to text ":smile:"
+- Adapt: Remove emoji support from application
+```
+
+✅ **Correct**:
+```
+Problem: Database charset is latin1, causing emoji errors
+Root cause: Wrong charset configuration
+Action: Change database charset to utf8mb4 → Emoji work properly
+```
+
+## Judgment Criteria - Before Taking Action
+
+Ask yourself:
+- [ ] Have I identified the EXACT root cause?
+- [ ] Am I about to suppress/bypass/adapt to broken environment?
+- [ ] Should I fix the root cause instead?
+- [ ] Am I choosing "easy wrong" over "hard right"?
+- [ ] If considering workaround: Have I asked user via AskQuestion?
+
+**If ANY answer is "yes" to wrong approach → STOP and reconsider**
+
+## Core Mantras
+
+1. **"Great engineers solve problems, poor engineers hide them"**
+2. **"Problem → Solve → Success, NOT: Problem → Avoid → Different path"**
+3. **"Fix environment, not requirement"**
+4. **"Respect original design intent"**
+5. **"Easy wrong is worse than hard right"**
+
+## Allowed Scenarios Without Asking
+
+✅ **Direct root cause fixes** - No workaround involved
+✅ **Improving while fixing** - Make solution better during fix
+✅ **Adding safety checks** - Prevent similar issues in future
+✅ **Fixing multiple root causes** - If problem has 2+ causes, fix all
+
+---
+
+*This rule consolidates: solve-not-suppress, no-workaround-without-approval, fix-root-cause-not-adapt*
