@@ -9,6 +9,7 @@ alwaysApply: true
 ## 🚫 NEVER
 
 - ❌ **Skip loading rules in thinking** — MUST declare applicable rules first
+- ❌ **Omit 00-CORE-ENFORCEMENT from rules loading** — This rule MUST ALWAYS be listed
 - ❌ **Generate `*report.md`, `*summary.md`, `*list.md`, `*doc.md`** — ⚠️ SEVERE TOKEN WASTE
   - **Without explicit user request → FORBIDDEN**
   - Summarize in chat response instead
@@ -34,15 +35,19 @@ alwaysApply: true
 ```
 === Rules Loading ===
 Applicable rules for this task:
+- 00-CORE-ENFORCEMENT: [Always required - core principles]
 - [Rule Name]: [Brief description of what it requires]
 - [Rule Name]: [Brief description of what it requires]
 === Rules Loaded ===
 ```
 
+**🔴 CRITICAL: 00-CORE-ENFORCEMENT MUST ALWAYS be listed first!**
+
 **Example:**
 ```
 === Rules Loading ===
 Applicable rules for this task:
+- 00-CORE-ENFORCEMENT: Core enforcement rules (ALWAYS loaded)
 - zero-speculation-mandatory: Must verify file existence before assuming
 - user-interaction-mandatory: Must use AskQuestion for user choices
 - diagnose-before-action: Must identify root cause before fixing
@@ -51,8 +56,11 @@ Applicable rules for this task:
 
 **Purpose:** Ensures rules are actively loaded and applied, not passively ignored.
 
+**Mandatory Rule:** 00-CORE-ENFORCEMENT MUST appear in EVERY rules loading block!
+
 ### Mandatory Checks in thinking (14 items)
 1. [ ] **Rules loaded and declared in thinking?** ← **MANDATORY FIRST**
+   - [ ] **00-CORE-ENFORCEMENT listed first?** ← **MUST BE PRESENT**
 2. [ ] **About to generate .md report/summary/list file?** → ⚠️ **FORBIDDEN - TOKEN WASTE**
 3. [ ] Based on unverified assumptions?
 4. [ ] Execution task or answer question?

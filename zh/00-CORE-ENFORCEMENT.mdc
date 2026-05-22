@@ -9,6 +9,7 @@ alwaysApply: true
 ## 🚫 绝对禁止（NEVER）
 
 - ❌ **跳过thinking中的规则加载** — 必须先声明适用规则
+- ❌ **规则加载中遗漏00-CORE-ENFORCEMENT** — 此规则必须始终列出
 - ❌ **生成`*报告.md`、`*总结.md`、`*清单.md`、`*说明.md`** — ⚠️ 严重浪费Token
   - **用户未明确要求→严禁生成**
   - 在聊天回复中总结即可
@@ -34,15 +35,19 @@ alwaysApply: true
 ```
 === 规则加载 ===
 本次任务适用规则：
+- 00-CORE-ENFORCEMENT：[始终必需 - 核心原则]
 - [规则名称]：[规则要求的简要说明]
 - [规则名称]：[规则要求的简要说明]
 === 规则已加载 ===
 ```
 
+**🔴 严重警告：00-CORE-ENFORCEMENT必须始终列在第一位！**
+
 **示例：**
 ```
 === 规则加载 ===
 本次任务适用规则：
+- 00-CORE-ENFORCEMENT：核心强制规范（始终加载）
 - zero-speculation-mandatory：假设前必须验证文件是否存在
 - user-interaction-mandatory：用户选择必须使用AskQuestion工具
 - diagnose-before-action：修复前必须识别根本原因
@@ -51,8 +56,11 @@ alwaysApply: true
 
 **目的：** 确保规则被主动加载和应用，而非被动忽略。
 
+**强制要求：** 00-CORE-ENFORCEMENT必须出现在每个规则加载块中！
+
 ### thinking中必检（14项）
 1. [ ] **规则已在thinking中加载并声明？** ← **强制第一项**
+   - [ ] **00-CORE-ENFORCEMENT列在第一位？** ← **必须存在**
 2. [ ] **准备生成.md报告/总结/清单文件？** → ⚠️ **严禁 - 浪费Token**
 3. [ ] 是否基于未验证的假设？
 4. [ ] 执行类任务还是回答类问题？
