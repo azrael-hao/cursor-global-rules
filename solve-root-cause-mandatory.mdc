@@ -7,6 +7,7 @@ alwaysApply: true
 # 🔴 Solve Root Cause Mandatory
 
 > **Universal Principle: Always solve the ROOT CAUSE. Never suppress problems, bypass with workarounds, or adapt to wrong environment without user approval.**
+> **Existence Principle: Verify the problem exists before solving it. If a suspected problem is not confirmed, do not modify the system for it.**
 
 ## 🚫 NEVER - Three Forbidden Anti-Patterns
 
@@ -44,9 +45,10 @@ alwaysApply: true
 
 ### Step 1: Diagnose Root Cause (see diagnose-before-action rule)
 1. What EXACTLY is failing?
-2. Where EXACTLY does it fail?
-3. What is the root cause?
-4. Why does the requirement exist?
+2. Does the suspected problem actually exist? What evidence proves it?
+3. Where EXACTLY does it fail?
+4. What is the root cause?
+5. Why does the requirement exist?
 
 ### Step 2: Identify Correct Solution
 ```
@@ -57,7 +59,7 @@ Priority 4: NEVER unilaterally choose workaround
 ```
 
 ### Step 3: Implement and Verify
-1. Implement fix targeting exact root cause
+1. Implement fix targeting exact root cause only for confirmed issues
 2. Verify problem no longer occurs
 3. Verify no new problems introduced
 4. Confirm solution is sustainable (won't break again)
@@ -168,6 +170,7 @@ Action: Change database charset to utf8mb4 → Emoji work properly
 ## Judgment Criteria - Before Taking Action
 
 Ask yourself:
+- [ ] Have I verified the problem actually exists?
 - [ ] Have I identified the EXACT root cause?
 - [ ] Am I about to suppress/bypass/adapt to broken environment?
 - [ ] Should I fix the root cause instead?

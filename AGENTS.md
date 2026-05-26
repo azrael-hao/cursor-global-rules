@@ -10,6 +10,8 @@ These rules are adapted from the Cursor `.mdc` rules in this directory for Codex
 - Do not assume files, fields, methods, APIs, data structures, or behavior exist. Verify with actual files, commands, docs, or data.
 - Do not use vague uncertainty as a basis for action. Replace guessing with inspection and verification.
 - Do not jump to fixes before diagnosing the exact issue and likely root cause.
+- Do not fix a suspected problem before verifying that the problem actually exists.
+- Do not change code, configuration, data, or files for issues that cannot be reproduced or evidenced.
 - Do not leave solvable work half-finished and require the user to ask you to continue.
 - Do not overextend into unrelated explanations or background.
 - Do not read only a small slice of a relevant file when the full context is needed.
@@ -22,6 +24,8 @@ These rules are adapted from the Cursor `.mdc` rules in this directory for Codex
 - Treat questions such as "what", "why", or "how" as answer tasks unless the user asks for implementation.
 - Prefer the shortest complete path to the user's goal.
 - Verify before deciding, edit only after understanding the relevant context, and verify again after changes.
+- When a potential issue is discovered, first prove it exists with a failing test, reproducible command, log, trace, inspected data, or source-level evidence. Fix only confirmed issues.
+- If investigation shows the suspected issue does not exist, do not change the system for it. Report that it was checked and left unchanged.
 - Keep final responses focused on what changed, how it was verified, and any remaining risk.
 - Preserve user changes in the working tree. Never revert unrelated edits unless explicitly requested.
 
@@ -34,6 +38,7 @@ Use evidence before action:
 - For API behavior, read the API definition or official documentation before relying on a return shape.
 - For errors, inspect logs, stack traces, failing tests, and relevant code before fixing.
 - For performance work, measure or inspect actual execution data before optimizing.
+- For suspected issues found during review or implementation, verify existence before fixing. Acceptable evidence includes a reproducible failure, failing test, command output, log entry, trace, concrete data mismatch, or direct code path proof.
 
 Trusted information:
 
@@ -53,6 +58,7 @@ Untrusted information:
 Before fixing a problem, establish:
 
 - What exactly is failing.
+- Whether the suspected failure truly exists.
 - Where it fails, including file, function, command, or line when available.
 - Expected behavior.
 - Actual behavior.
@@ -60,16 +66,30 @@ Before fixing a problem, establish:
 
 Then:
 
+- If the issue is confirmed, continue diagnosis and implement the smallest root-cause fix.
+- If the issue is not confirmed, stop that fix path and leave the code unchanged for that suspected issue.
 - Trace the execution path or data flow.
 - Identify the first divergence between expected and actual behavior.
 - Implement a targeted fix for the root cause.
 - Verify that the original issue is resolved and no obvious regression was introduced.
+
+## Problem Existence Verification
+
+When handling any discovered or reported problem:
+
+- Reproduce or prove the problem before changing anything.
+- Prefer direct verification: run the failing command or test, inspect the exact log or trace, query the actual data, or read the exact code path.
+- Separate "confirmed issue" from "possible concern" in your own work and in the final response when useful.
+- Fix confirmed issues only.
+- Do not perform preventive or speculative edits for an unconfirmed issue unless the user explicitly asks for hardening or refactoring.
+- If the problem cannot be reproduced but evidence strongly suggests risk, explain the evidence and ask before making non-trivial changes.
 
 ## Solve Root Cause
 
 Prefer direct, sustainable fixes:
 
 - Fix the cause instead of hiding the symptom.
+- Fix only after the symptom or defect is confirmed to exist.
 - Keep validation, tests, permissions, and security checks intact.
 - Do not comment out failing tests or disable warnings just to get a green result.
 - Do not change requirements, downgrade runtimes, remove features, or accept a broken environment as permanent without user approval.
@@ -194,6 +214,8 @@ Before final response, check:
 
 - The user's newest request was addressed.
 - Relevant files and data were actually inspected.
+- Every fixed issue was first confirmed to exist.
+- Suspected issues that were not confirmed were left unchanged.
 - The root cause or rationale is evidence-based.
 - No unrelated user changes were reverted.
 - No unnecessary report files were created.

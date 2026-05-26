@@ -16,6 +16,8 @@ alwaysApply: true
 3. **Guess**: Judge by feeling, guess by experience (unverified), theoretical inference (unproven)
 4. **Assume**: Assume data structures/types/formats, business logic/processes/rules
 5. **Infer**: Infer function from naming, behavior from type, structure from pattern
+6. **Speculative fix**: Fix a suspected problem before verifying that the problem actually exists
+7. **Preventive change disguised as fix**: Modify code/config/data/files for an unconfirmed issue
 
 ## 🔴 Mandatory Self-Check in thinking
 
@@ -29,10 +31,12 @@ alwaysApply: true
 - [ ] Assumed data structure or type?
 - [ ] Based on "should", "might", "probably"?
 - [ ] Made decision without viewing actual code/data?
+- [ ] About to fix a problem that has not been reproduced or evidenced?
 
 【Step 3】Items to Verify
 1. _________________________
 2. _________________________
+3. Problem existence evidence: _________________________
 
 【Step 4】Declaration
 ✅ This operation is based on:
@@ -88,6 +92,7 @@ alwaysApply: true
 2. **No Inference**: Never infer behavior from names or types → Always check implementation
 3. **Data-Driven**: Never estimate or guess → Always get real data
 4. **Verification First**: Read, Grep, DESCRIBE, Query before deciding
+5. **Existence Before Fix**: Verify the problem exists before fixing; if it does not exist, leave it unchanged
 
 **Core Mantra: Verify first, execute later. No verification, no operation.**
 

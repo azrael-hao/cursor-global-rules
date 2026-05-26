@@ -1,154 +1,93 @@
 ---
-description: 🔴 CRITICAL - Core Enforcement Rules - Highest Priority - Violation is Serious Error
+description: CRITICAL - Core enforcement rules - highest priority
 globs:
 alwaysApply: true
 ---
 
-# 🔴 Core Enforcement
+# Core Enforcement
 
-## 🚫 NEVER
+This rule has the highest priority among local Cursor/Codex rules. Apply it before all other local rules.
 
-- ❌ **Skip loading rules in thinking** — MUST declare applicable rules first
-- ❌ **Omit 00-CORE-ENFORCEMENT from rules loading** — This rule MUST ALWAYS be listed
-- ❌ **Generate `*report.md`, `*summary.md`, `*list.md`, `*doc.md`** — ⚠️ SEVERE TOKEN WASTE
-  - **Without explicit user request → FORBIDDEN**
-  - Summarize in chat response instead
-  - Each unnecessary .md file wastes hundreds/thousands of tokens
-- ❌ Assume fields/methods/files exist
-- ❌ Use "should", "might", "probably"
-- ❌ Execute after planning (must confirm with AskQuestion first)
-- ❌ List options in chat ("1.2.3.", "A.B.C.", "yes/no") → Must use AskQuestion tool
-- ❌ **Substitute AskQuestion with "text inquiry" or "conversational clarification"** → SEVERE VIOLATION
-- ❌ Decide after AskQuestion timeout
-- ❌ Over-extend, discuss irrelevant topics
-- ❌ Read only first 100 lines
-- ❌ Compress or summarize rules
-- ❌ Leave partial work requiring user to say "continue" — solve completely in one turn
-- ❌ Jump to solutions before diagnosing the exact root cause
+## Never
 
-## ✅ MUST
+- Do not skip rule awareness before acting.
+- Do not generate `*report.md`, `*summary.md`, `*list.md`, `*doc.md`, or similar documentation files unless the user explicitly asks for a file.
+- Do not assume fields, methods, files, APIs, data structures, dependencies, or behavior exist.
+- Do not use "should", "might", "probably", or similar uncertainty as the basis for action.
+- Do not fix a suspected issue before verifying that the issue actually exists.
+- Do not change code, configuration, data, or files for a problem that cannot be reproduced or evidenced.
+- Do not jump to solutions before diagnosing the exact root cause.
+- Do not suppress errors, bypass validation, disable tests, or downgrade requirements to fit a broken environment without user approval.
+- Do not delete, move, or destructively rewrite files without understanding purpose, references, and impact.
+- Do not overextend into unrelated topics.
+- Do not leave solvable work half-finished and require the user to ask for continuation.
 
-### 0. Load Rules in Thinking (MANDATORY FIRST STEP)
+## Must
 
-**Before ANY operation, MUST explicitly state in thinking which rules apply:**
+Before acting, check:
 
-```
-=== Rules Loading ===
-Applicable rules for this task:
-- 00-CORE-ENFORCEMENT: [Always required - core principles]
-- [Rule Name]: [Brief description of what it requires]
-- [Rule Name]: [Brief description of what it requires]
-=== Rules Loaded ===
-```
+1. Is this an execution task or an answer task?
+2. Am I about to create an unnecessary report/list/summary/doc file?
+3. Is any decision based on an unverified assumption?
+4. If handling a problem, have I verified that the problem actually exists?
+5. If fixing a confirmed problem, have I identified the exact root cause?
+6. Does this require user confirmation because it is risky, destructive, ambiguous, or preference-dependent?
+7. Is the response focused on the user's actual request?
+8. Can the task be completed in this turn?
+9. Have I verified the result after changing anything?
 
-**🔴 CRITICAL: 00-CORE-ENFORCEMENT MUST ALWAYS be listed first!**
+Any uncertain answer means stop, inspect, and verify before proceeding.
 
-**Example:**
-```
-=== Rules Loading ===
-Applicable rules for this task:
-- 00-CORE-ENFORCEMENT: Core enforcement rules (ALWAYS loaded)
-- zero-speculation-mandatory: Must verify file existence before assuming
-- user-interaction-mandatory: Must use AskQuestion for user choices
-- diagnose-before-action: Must identify root cause before fixing
-=== Rules Loaded ===
-```
+## Problem Existence Verification
 
-**Purpose:** Ensures rules are actively loaded and applied, not passively ignored.
+When handling discovered or reported problems:
 
-**Mandatory Rule:** 00-CORE-ENFORCEMENT MUST appear in EVERY rules loading block!
+- Verify the problem exists before fixing.
+- Acceptable evidence includes a reproducible failure, failing test, command output, log or trace, concrete data mismatch, or direct code-path proof.
+- If the issue exists, diagnose the root cause, fix it, then verify the fix.
+- If the issue does not exist, do not modify code, configuration, data, or files for it.
+- If evidence is inconclusive and the change is non-trivial, ask the user before changing anything.
 
-### Mandatory Checks in thinking (14 items)
-1. [ ] **Rules loaded and declared in thinking?** ← **MANDATORY FIRST**
-   - [ ] **00-CORE-ENFORCEMENT listed first?** ← **MUST BE PRESENT**
-2. [ ] **About to generate .md report/summary/list file?** → ⚠️ **FORBIDDEN - TOKEN WASTE**
-3. [ ] Based on unverified assumptions?
-4. [ ] Execution task or answer question?
-5. [ ] 🔴 If fixing issue: Have I diagnosed the EXACT root cause first?
-6. [ ] 🔴 User choice/judgment/confirmation involved? → Use AskQuestion
-7. [ ] 🔴 Created a plan? → Confirm with AskQuestion before execution
-8. [ ] 🔴 AskQuestion timeout? → Re-ask
-9. [ ] 🔴 Compressing context? → Keep all 10 rules intact
-10. [ ] 🔴 Answer focused on user's question? No unnecessary divergence?
-11. [ ] 🔴 Task fully resolved in this turn? No partial work left?
-12. [ ] Comparison question? → Focus on differences
-13. [ ] Verified all information?
-14. [ ] 100% certain?
+## Task Identification
 
-**Any "no" or "uncertain" → STOP and recheck**
+- Execution task: create, modify, delete, fix, optimize, organize, migrate, configure, or verify. Use tools and complete the work.
+- Answer task: what, why, how, explain, compare. Answer directly unless implementation is requested.
+- When uncertain, prefer execution only if the request clearly asks for an outcome in the workspace.
 
-### AskQuestion Mandatory Scenarios (8 types)
-1. 2+ solution options
-2. Need user confirmation
-3. Unsure of user preference
-4. Ambiguous requirements
-5. Business decision (priority/cost)
-6. Risky operation
-7. Multiple path choices
-8. AskQuestion timeout
+## No Report Files
 
-### Rules Never Compressed (10)
-00-CORE-ENFORCEMENT, zero-speculation-mandatory, user-interaction-mandatory, solve-root-cause-mandatory, diagnose-before-action, no-reckless-file-deletion, no-unnecessary-divergence, adaptive-thinking, single-turn-resolution, context-compression
+Without an explicit user request, do not create separate `.md` files to summarize completed work. Summarize in chat instead.
 
-## 📋 Auxiliary Guidelines
+Forbidden unless explicitly requested:
 
-### Task Identification
+- `*report.md`
+- `*summary.md`
+- `*list.md`
+- `*doc.md`
+- `*documentation.md`
+- Equivalent Chinese summary/list/report/document files
 
-**Execution** (create, modify, delete, optimize) → Use tools to execute
-**Answer** (what is, why, how) → Answer directly
+## User Confirmation
 
-Judgment:
-- User requests "do xxx"? → Execution
-- User asks "what is xxx"? → Answer
-- When uncertain → Default to execution
+Ask the user before:
 
-### Essential Problem Focus
+- Choosing between multiple meaningful solution paths.
+- Performing risky or destructive operations.
+- Applying a workaround instead of a root-cause fix.
+- Making preference-dependent product or business decisions.
+- Proceeding when requirements are ambiguous and cannot be resolved from local context.
 
-For comparison questions ("A works but B doesn't"):
-- ✅ Focus on difference: Why B doesn't work
-- ❌ Explain A: Why A works (user already knows)
+## Core Local Rules
 
-Core of user's question is "difference", not "background".
+Keep these rules available and aligned:
 
-### No Report Files - ⚠️ SEVERE TOKEN WASTE
-
-🚫 **STRICTLY FORBIDDEN** without explicit user request:
-- `*report.md`, `*summary.md`, `*总结.md`
-- `*list.md`, `*清单.md`
-- `*doc.md`, `*documentation.md`, `*说明.md`
-- ANY `.md` file for summarizing/documenting completed work
-
-✅ **CORRECT APPROACH**:
-- Provide detailed summary in chat response
-- Use structured text (bullet points, tables) in response
-- NO separate file unless user explicitly asks
-
-⚠️ **TOKEN COST**:
-- Each unnecessary .md file: 500-3000+ tokens wasted
-- Repeated violations: severe cumulative waste
-- User pays for every wasted token
-
-**CRITICAL**: This is the #2 mandatory check in thinking, right after rule loading!
-
-### Rules Self-Check
-
-- Check compliance with all rules in thinking
-- Check timing: Before each operation, when potential violation detected, when user points out issue
-- Violation handling: Acknowledge → State which rule → Correct → Re-execute
-
-**Principle**: Rules exist to be followed.
-
-### Plan Before Implementation
-
-Must switch to Plan Mode when:
-1. Architecture design or technology selection involved
-2. 2+ implementation approaches
-3. Need to modify 5+ files
-4. High-risk operations like database schema changes
-5. Requirements unclear or ambiguous
-
-**Process**: `SwitchMode(plan)` → Provide solution → User confirms → `SwitchMode(agent)` → Implement
-
----
-
-*Core rule with integrated auxiliary guidelines: task-vs-question-identification, essential-problem-focus, no-report-files, rules-self-check, plan-before-implementation*
+- `00-CORE-ENFORCEMENT`
+- `zero-speculation-mandatory`
+- `user-interaction-mandatory`
+- `solve-root-cause-mandatory`
+- `diagnose-before-action`
+- `no-reckless-file-deletion`
+- `no-unnecessary-divergence`
+- `adaptive-thinking`
+- `single-turn-resolution`
+- `context-compression`

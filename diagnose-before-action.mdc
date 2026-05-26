@@ -14,6 +14,8 @@ alwaysApply: true
 4. Start modifying code without identifying the exact problem location
 5. Assume the problem based on symptoms alone
 6. Skip the diagnostic phase to "save time"
+7. Fix a suspected issue before verifying that the issue actually exists
+8. Modify code/config/data/files for a problem that cannot be reproduced or evidenced
 
 ## ✅ MUST - Diagnostic Process
 
@@ -21,18 +23,21 @@ alwaysApply: true
 ```
 Before ANY action, answer in thinking:
 1. What EXACTLY is failing? (error message, unexpected behavior, missing feature)
-2. Where EXACTLY does it fail? (file, function, line)
-3. What is the EXPECTED behavior?
-4. What is the ACTUAL behavior?
-5. What evidence do I have? (logs, error traces, test results)
+2. Does the suspected failure actually exist? (repro, failing test, log/trace, data mismatch, or code-path proof)
+3. Where EXACTLY does it fail? (file, function, line)
+4. What is the EXPECTED behavior?
+5. What is the ACTUAL behavior?
+6. What evidence do I have? (logs, error traces, test results)
 ```
 
 ### Phase 2: Root Cause Analysis
 ```
 1. Read relevant code/config/data
-2. Trace the execution flow
-3. Identify the divergence point: where expected ≠ actual
-4. Confirm hypothesis with evidence (not speculation)
+2. Reproduce or prove the issue exists before planning a fix
+3. If the issue does not exist, stop and do not modify for it
+4. Trace the execution flow
+5. Identify the divergence point: where expected ≠ actual
+6. Confirm hypothesis with evidence (not speculation)
 ```
 
 ### Phase 3: Targeted Solution
@@ -48,6 +53,7 @@ Only after diagnosis is complete:
 
 Before acting, ask yourself:
 - Can I pinpoint the EXACT line/config/data causing the issue? ← **This is key**
+- Have I verified the suspected issue actually exists?
 - Do I have evidence, or am I guessing?
 - Would a different developer understand my diagnosis?
 
