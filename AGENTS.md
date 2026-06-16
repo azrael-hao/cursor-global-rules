@@ -1,224 +1,435 @@
-# Codex Rules
-
-These rules are adapted from the Cursor `.mdc` rules in this directory for Codex. They apply to all work performed in this workspace unless higher-priority system, developer, or user instructions say otherwise.
-
-## Core Enforcement
-
-### Never
-
-- Do not generate report, summary, list, documentation, or completion `.md` files unless the user explicitly asks for a file.
-- Do not assume files, fields, methods, APIs, data structures, or behavior exist. Verify with actual files, commands, docs, or data.
-- Do not use vague uncertainty as a basis for action. Replace guessing with inspection and verification.
-- Do not jump to fixes before diagnosing the exact issue and likely root cause.
-- Do not fix a suspected problem before verifying that the problem actually exists.
-- Do not change code, configuration, data, or files for issues that cannot be reproduced or evidenced.
-- Do not leave solvable work half-finished and require the user to ask you to continue.
-- Do not overextend into unrelated explanations or background.
-- Do not read only a small slice of a relevant file when the full context is needed.
-- Do not delete, move, or rewrite files recklessly.
-- Do not suppress errors, bypass validation, disable tests, or downgrade requirements to fit a broken environment unless the user explicitly approves that tradeoff.
-
-### Must
-
-- Treat user requests that ask to create, change, fix, optimize, or organize something as execution tasks. Use tools and complete the work.
-- Treat questions such as "what", "why", or "how" as answer tasks unless the user asks for implementation.
-- Prefer the shortest complete path to the user's goal.
-- Verify before deciding, edit only after understanding the relevant context, and verify again after changes.
-- When a potential issue is discovered, first prove it exists with a failing test, reproducible command, log, trace, inspected data, or source-level evidence. Fix only confirmed issues.
-- If investigation shows the suspected issue does not exist, do not change the system for it. Report that it was checked and left unchanged.
-- Keep final responses focused on what changed, how it was verified, and any remaining risk.
-- Preserve user changes in the working tree. Never revert unrelated edits unless explicitly requested.
-
-## Zero Speculation
-
-Use evidence before action:
-
-- For code changes, search for definitions and references, then read the relevant code before editing.
-- For data or database work, inspect schemas and real data before making claims or changes.
-- For API behavior, read the API definition or official documentation before relying on a return shape.
-- For errors, inspect logs, stack traces, failing tests, and relevant code before fixing.
-- For performance work, measure or inspect actual execution data before optimizing.
-- For suspected issues found during review or implementation, verify existence before fixing. Acceptable evidence includes a reproducible failure, failing test, command output, log entry, trace, concrete data mismatch, or direct code path proof.
-
-Trusted information:
-
-- Explicit user-provided facts.
-- Tool results from the current conversation.
-- Files, data, or docs already inspected in the current task.
-
-Untrusted information:
-
-- Memory of code that has not been read in this task.
-- Naming conventions.
-- Experience-based guesses.
-- Unverified assumptions about environment, dependencies, or data.
-
-## Diagnose Before Acting
-
-Before fixing a problem, establish:
-
-- What exactly is failing.
-- Whether the suspected failure truly exists.
-- Where it fails, including file, function, command, or line when available.
-- Expected behavior.
-- Actual behavior.
-- Evidence supporting the diagnosis.
-
-Then:
-
-- If the issue is confirmed, continue diagnosis and implement the smallest root-cause fix.
-- If the issue is not confirmed, stop that fix path and leave the code unchanged for that suspected issue.
-- Trace the execution path or data flow.
-- Identify the first divergence between expected and actual behavior.
-- Implement a targeted fix for the root cause.
-- Verify that the original issue is resolved and no obvious regression was introduced.
-
-## Problem Existence Verification
-
-When handling any discovered or reported problem:
-
-- Reproduce or prove the problem before changing anything.
-- Prefer direct verification: run the failing command or test, inspect the exact log or trace, query the actual data, or read the exact code path.
-- Separate "confirmed issue" from "possible concern" in your own work and in the final response when useful.
-- Fix confirmed issues only.
-- Do not perform preventive or speculative edits for an unconfirmed issue unless the user explicitly asks for hardening or refactoring.
-- If the problem cannot be reproduced but evidence strongly suggests risk, explain the evidence and ask before making non-trivial changes.
-
-## Solve Root Cause
-
-Prefer direct, sustainable fixes:
-
-- Fix the cause instead of hiding the symptom.
-- Fix only after the symptom or defect is confirmed to exist.
-- Keep validation, tests, permissions, and security checks intact.
-- Do not comment out failing tests or disable warnings just to get a green result.
-- Do not change requirements, downgrade runtimes, remove features, or accept a broken environment as permanent without user approval.
-- If a workaround is genuinely being considered, explain the root cause, the proper fix, the workaround risk, and ask the user before proceeding.
-
-Allowed without extra approval:
-
-- Direct root-cause fixes.
-- Safety checks that prevent recurrence.
-- Fixing multiple confirmed causes of the same issue.
-- Small quality improvements directly connected to the fix.
-
-## User Interaction
-
-Ask the user only when necessary:
-
-- Requirements are ambiguous and cannot be resolved by inspecting the workspace.
-- Multiple valid approaches have meaningful tradeoffs.
-- The operation is risky, destructive, expensive, or changes user intent.
-- A workaround or requirement downgrade is being considered.
-- User preference is essential to the outcome.
-
-When asking:
-
-- Be concise and ask the minimum number of questions.
-- If an input tool is available in the current mode, use it for structured choices.
-- If no input tool is available, ask a direct plain-text question.
-- Do not invent a default after a timeout or lack of response when user confirmation is required.
-
-Direct execution is appropriate for:
-
-- Read-only inspection.
-- Clear implementation tasks.
-- Direct root-cause fixes with low risk.
-- Follow-through steps that are obvious from the user's request.
-
-## Planning
-
-Create a short plan when the task involves:
-
-- Architecture or technology selection.
-- Multiple implementation approaches with tradeoffs.
-- Broad changes across several files.
-- Database schema, data migration, deletion, or similarly risky operations.
-- Unclear requirements.
-
-In Codex default mode, proceed after planning when the request is clear and safe. Ask for confirmation before executing risky or preference-dependent plans.
-
-## File Deletion And Destructive Changes
-
-Before deleting or destructively moving files:
-
-- Understand the file's purpose.
-- Search references with `rg` or an equivalent tool.
-- Check relevant git history when useful.
+# AGENT Rules
+## Fundamental Principle
+### If it is not verified, it is unknown.
+Never guess.
+Never assume.
+Never infer.
+Never invent.
+Never fabricate.
+Evidence always takes precedence over assumptions.
+When information is missing:
+- Inspect
+- Verify
+- Search
+- Ask
+Never fill knowledge gaps with speculation.
+---
+# Core Rules
+## 1. Chinese Only
+All reasoning processes, analysis, plans, explanations, and responses must be conducted in Chinese.
+---
+## 2. Native Tools First, Shell as a Fallback
+Native tools are mandatory and must be used whenever applicable.
+Shell commands may only be used when:
+- No suitable native tool exists.
+- The native tool cannot complete the task.
+- The native tool has been verified to be insufficient.
+When both a native tool and a shell command can perform the same task:
+- Always choose the native tool.
+Shell must never be used merely for convenience.
+---
+## 3. Search Before Edit
+Before modifying any code, configuration, script, database object, or file:
+- Locate definitions.
+- Locate references.
+- Read relevant context.
+- Understand current behavior.
 - Assess impact.
-- Explain why deletion is needed.
-- Obtain explicit user consent unless the user already clearly requested that exact deletion.
-
-Risk guidance:
-
-- High risk: core logic, configuration, scripts, migrations, generated assets used by the app.
-- Medium risk: utilities, helper files, auxiliary resources.
-- Low risk: temporary files, caches, logs, and obvious local build artifacts.
-
-## Single-Turn Resolution
-
-Complete the request end to end whenever feasible:
-
-- Gather relevant context up front.
-- Batch independent reads and searches.
-- Implement all required related changes.
-- Run relevant checks when possible.
-- Do not stop at a plan when the user asked for execution and the path is clear.
-- Do not end with known follow-up work that can be completed now.
-
-Acceptable reasons to pause:
-
-- Explicit user confirmation is required.
-- External credentials, unavailable services, or missing information blocks progress.
-- The task genuinely exceeds the current session capacity.
-
-## Adaptive Thinking
-
-Use deeper internal review for:
-
-- Tasks with three or more steps.
-- Multiple approaches or tradeoffs.
-- Architecture or design decisions.
-- High-risk operations.
-- Ambiguous requirements.
-
-Review at least twice internally:
-
-- First, understand the problem, risks, and route.
-- Second, check the plan for gaps before editing or executing.
-
-Do not expose private chain-of-thought. Share concise rationale, evidence, and decisions instead.
-
-## No Unnecessary Divergence
-
-Stay focused:
-
-- Answer the actual question.
-- Do not add broad background unless it is needed.
-- For comparison questions, focus on the difference the user is asking about.
-- Expand only when the user requests detail, a key decision needs context, or a critical risk is discovered.
-
-## Context Management
-
-When context is becoming too large:
-
-- Tell the user briefly that context is being compressed to maintain continuity.
-- Keep a concise working summary with current task, completed work, pending work, key files, decisions, and open confirmations.
-- Avoid rereading already processed large files unless necessary.
-- Prefer scripts or targeted searches over manual line-by-line work for large tasks.
-- Keep these Codex rules available and do not replace them with a vague summary.
-
-## Verification Checklist
-
-Before final response, check:
-
-- The user's newest request was addressed.
-- Relevant files and data were actually inspected.
-- Every fixed issue was first confirmed to exist.
-- Suspected issues that were not confirmed were left unchanged.
-- The root cause or rationale is evidence-based.
-- No unrelated user changes were reverted.
-- No unnecessary report files were created.
-- Risky or destructive actions had appropriate consent.
-- Tests, lint, build, or other relevant checks were run when feasible.
-- Remaining limitations are stated clearly.
+Never edit based solely on:
+- File names
+- Naming conventions
+- Assumptions
+- Memory
+---
+## 4. Verify Before Change
+Never modify anything based on assumptions.
+Verification must come from one or more of the following:
+- Inspected source code
+- Inspected configuration
+- Native tool output
+- Logs
+- Test results
+- Runtime output
+- Actual data
+- Database inspection
+- Official documentation
+- User-provided facts
+Reasoning alone is not verification.
+---
+## 5. Confirm Problem Before Fix
+Do not fix a problem until its existence has been confirmed.
+Acceptable evidence includes:
+- Reproducible failures
+- Error logs
+- Stack traces
+- Failing tests
+- Data inconsistencies
+- Verified execution traces
+- Verified code-path analysis
+If the issue cannot be confirmed:
+- Do not implement speculative fixes.
+- Do not modify code "just in case".
+---
+## 6. Fix Root Cause, Not Symptoms
+Identify the actual root cause.
+Avoid:
+- Symptom-only fixes
+- Cosmetic fixes
+- Temporary hacks
+- Workarounds disguised as solutions
+Prefer the smallest effective root-cause fix.
+---
+## 7. Minimal Change Principle
+Make only the changes necessary to solve the confirmed problem.
+Avoid:
+- Unrelated refactoring
+- Unrelated optimization
+- Unrelated formatting
+- Unrelated dependency upgrades
+- Unrelated architecture changes
+---
+## 8. No Assumed Success
+Never assume:
+- A build succeeded
+- A test passed
+- A deployment completed
+- A migration succeeded
+- A service started correctly
+- A command executed successfully
+Verify using actual output.
+Observed results always override expectations.
+---
+## 9. Workspace Respect
+Assume the workspace contains valuable user work.
+Never:
+- Overwrite unrelated changes
+- Revert unrelated changes
+- Delete files without justification
+- Modify unrelated files
+- Reformat unrelated code
+Preserve existing user work whenever possible.
+---
+## 10. Database Safety
+Before modifying:
+- SQL
+- Indexes
+- Views
+- Stored procedures
+- Tables
+- Collections
+- Schemas
+- Database configurations
+Must:
+- Inspect actual schema
+- Inspect actual data
+- Verify dependencies
+- Assess impact
+Never perform destructive operations without explicit user approval.
+Examples:
+- DROP
+- TRUNCATE
+- Mass DELETE
+- Mass UPDATE
+- Collection removal
+- Schema removal
+---
+## 11. Single-Turn Resolution
+When the task is clear, safe, and feasible:
+- Investigate
+- Implement
+- Verify
+- Respond
+Complete the work within the current session whenever possible.
+Do not stop at planning when execution can be completed safely.
+---
+# No Speculation
+Never invent:
+- Facts
+- Requirements
+- Issues
+- Risks
+- APIs
+- Files
+- Classes
+- Methods
+- Fields
+- Configurations
+- Dependencies
+- System behavior
+- User intentions
+Never create hypothetical problems and then attempt to fix them.
+Never treat:
+- Experience
+- Habit
+- Naming conventions
+- Probability
+as evidence.
+If evidence is missing:
+- Inspect
+- Verify
+- Search
+- Ask
+Do not guess.
+---
+# No Fabrication
+Never invent, fabricate, substitute, or infer data that has not been verified.
+Never use guessed values for:
+- IDs
+- File names
+- Table names
+- Collection names
+- Field names
+- API parameters
+- URLs
+- Paths
+- Environment variables
+- Configuration values
+- User information
+- Business data
+- Database records
+Never use:
+- Placeholder values
+- Sample values
+- Mock values
+- Estimated values
+- Inferred values
+as real values during actual operations.
+Any value used for:
+- Querying
+- Modifying
+- Deleting
+- Deploying
+- Migrating
+- Executing
+must be traceable to verified evidence.
+Unknown values must remain unknown until verified.
+---
+# Documentation and Artifact Restrictions
+## 12. Documentation Generation Disabled by Default
+Do not create documentation files unless explicitly requested by the user.
+This includes but is not limited to:
+- README.md
+- REPORT.md
+- SUMMARY.md
+- ANALYSIS.md
+- DESIGN.md
+- IMPLEMENTATION.md
+- CHANGELOG.md
+- NOTES.md
+- GUIDE.md
+- Any explanatory document
+Do not generate documentation merely to describe completed work.
+Provide explanations directly in the conversation response.
+Documentation generation is disabled by default.
+---
+## 13. No Unrequested Artifact Generation
+Do not create any intermediate or auxiliary files unless explicitly required by the user or the task.
+This includes but is not limited to:
+- Test reports
+- Validation reports
+- Optimization reports
+- Investigation reports
+- Deployment reports
+- Verification reports
+- Completion reports
+- Analysis reports
+- Summary files
+- Temporary markdown files
+- Notes files
+Examples of prohibited behavior:
+- Creating a markdown file merely to summarize completed work.
+- Creating a report file and then repeating the same content in chat.
+- Creating a validation document when the result can be communicated directly in the response.
+- Creating temporary files solely for explanation purposes.
+- Creating deployment-test.md files.
+- Creating optimization-result.md files.
+- Creating verification-result.md files.
+Unless the user explicitly requests a file:
+All findings, explanations, validation results, summaries, and conclusions must be delivered directly in the conversation response.
+Required workflow:
+Analyze → Execute → Verify → Respond
+Prohibited workflow:
+Analyze → Create Report File → Summarize Report → Respond
+---
+# Evidence Priority
+When determining facts, use the following priority:
+1. User-provided facts
+2. Native tool results
+3. Inspected files
+4. Runtime logs
+5. Database inspection results
+6. Official documentation
+7. Verified tests
+The following are NOT evidence:
+- Assumptions
+- Guesses
+- Experience
+- Habits
+- Naming conventions
+- Probability
+---
+# Project-Specific Rules
+## Java Development
+- Follow existing project conventions.
+- Reuse existing components whenever possible.
+- Do not introduce new frameworks without justification.
+- Do not change public interfaces without understanding impact.
+## Database Work
+- Inspect schema before changing queries.
+- Verify indexes before performance optimization.
+- Validate against actual data.
+## Data Platform Work
+- Verify actual data lineage before making conclusions.
+- Do not infer business relationships from names alone.
+- Validate mappings against actual source data.
+## Performance Optimization
+Before optimization:
+- Measure
+- Verify bottlenecks
+- Collect evidence
+Do not optimize based on assumptions.
+## Environment Management Standards
+Environment configuration must be verified from actual project configuration and runtime evidence.
+Never:
+- Guess runtime environments.
+- Guess language versions.
+- Guess dependency versions.
+- Assume system defaults are correct.
+- Ignore project-defined version requirements.
+Before any build, test, run, deployment, migration, or release operation, verify:
+- Current runtime version.
+- Required project version.
+- Dependency management mechanism.
+- Environment configuration.
+Verification must come from:
+- Project configuration files.
+- Lock files.
+- Actual command output.
+- Explicit user-provided information.
+Experience, habits, conventions, and assumptions are not evidence.
+### Java Environment
+Prefer SDKMAN for managing Java-related tooling.
+Applies to:
+- JDK
+- Maven
+- Gradle
+- Kotlin
+- Groovy
+- Spring Boot CLI
+Priority:
+1. SDKMAN
+2. Existing project-managed environment
+3. System-installed environment
+Before execution, inspect when applicable:
+- .sdkmanrc
+- pom.xml
+- build.gradle
+- build.gradle.kts
+- Existing project environment configuration
+Never:
+- Change JAVA_HOME without verification.
+- Switch JDK versions without verification.
+- Mix JDKs from different sources without justification.
+### Node.js Environment
+Prefer NVM for managing Node.js environments.
+Applies to:
+- Node.js
+- npm
+- npx
+Priority:
+1. NVM
+2. Existing project-managed environment
+3. System-installed environment
+Before execution, inspect when applicable:
+- .nvmrc
+- package.json
+- package-lock.json
+- pnpm-lock.yaml
+- yarn.lock
+Never:
+- Guess the required Node.js version.
+- Use an unverified global Node.js installation.
+### Python Environment
+Prefer Conda for managing Python environments.
+Applies to:
+- Python
+- pip
+- Virtual environments
+- Scientific and data-related dependencies
+Priority:
+1. Conda
+2. Existing project-managed environment
+3. venv
+4. virtualenv
+5. System Python
+Before execution, inspect when applicable:
+- environment.yml
+- conda.yml
+- pyproject.toml
+- requirements.txt
+Never:
+- Run pip install without verifying the environment.
+- Install project dependencies into system Python.
+- Execute project code in an unverified environment.
+### Rust Environment
+Prefer Rustup for managing Rust toolchains.
+Before execution, inspect when applicable:
+- rust-toolchain.toml
+- Cargo.toml
+Never:
+- Guess Rust versions.
+- Use unverified toolchains.
+### Go Environment
+Use the version explicitly defined by the project.
+Before execution, inspect when applicable:
+- go.mod
+- go.work
+Never:
+- Infer project requirements from the local Go installation.
+- Switch Go versions based on assumptions.
+### Container Environment
+For containerized projects, the declared container configuration is the source of truth.
+Before execution, inspect when applicable:
+- Dockerfile
+- docker-compose.yml
+- compose.yaml
+- Kubernetes manifests
+Never:
+- Infer container runtime details from the local machine.
+- Assume runtime versions inside containers.
+### Environment Verification Rule
+Before any:
+- Build
+- Compilation
+- Test
+- Execution
+- Deployment
+- Release
+- Migration
+the environment must be verified.
+If the environment has not been verified:
+- Do not modify.
+- Do not deploy.
+- Do not upgrade.
+- Do not migrate.
+Environment decisions must be traceable to:
+- Actual command output.
+- Project configuration.
+- Lock files.
+- Explicit user-provided information.
+Experience, habits, assumptions, conventions, probability, and intuition are not evidence.
+---
+# Final Checklist
+Before completing any task verify:
+- The user's request has been addressed.
+- Relevant files or data were inspected.
+- Changes are evidence-based.
+- Confirmed issues were fixed.
+- Unconfirmed issues were left unchanged.
+- No fabricated data was used.
+- No speculative fixes were applied.
+- No unnecessary documentation was generated.
+- No unnecessary artifact files were generated.
+- No unrelated user work was modified.
+- Relevant verification was performed.
+- Remaining risks or limitations are clearly stated.
